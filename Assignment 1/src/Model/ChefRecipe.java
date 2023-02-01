@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class ChefRecipe {
     String chefFirstName;
     String chefLastName;
-    char userName;
+    String userName;
     String email;
-    int phoneNo;
+    String phoneNo;
     ArrayList<Recipe> recipeList;
     
     public ChefRecipe(){
@@ -47,11 +47,11 @@ public class ChefRecipe {
         this.recipeList = recipeList;
     }
 
-    public char getUserName() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setUserName(char userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
@@ -63,15 +63,15 @@ public class ChefRecipe {
         this.email = email;
     }
 
-    public int getPhoneNo() {
+    public String getPhoneNo() {
         return phoneNo;
     }
 
-    public void setPhoneNo(int phoneNo) {
+    public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
     }
     
-    public Recipe createProduct(String title, int noServings,boolean glutenFree,float difficulty,int ingredientsNo, String foodCategory,String description, File recipeImg){
+    public Recipe createRecipe(String title, int noServings,boolean glutenFree,float difficulty,int ingredientsNo, String foodCategory,String description, String recipeImg){
         
         Recipe recipeDetails=new Recipe();
         
@@ -91,7 +91,7 @@ public class ChefRecipe {
         
     }
     
-    public Recipe findProduct(String recipeTitle){
+    public Recipe findRecipe(String recipeTitle){
         
         for(Recipe rec:this.recipeList){
             if(rec.getTitle() == recipeTitle){

@@ -18,7 +18,7 @@ public class Recipe {
     int ingredientsNo;
     String foodCategory;
     String description;
-    File recipeImg;
+    String recipeImg;
 
     public String getTitle() {
         return title;
@@ -76,11 +76,11 @@ public class Recipe {
         this.description = description;
     }
 
-    public File getRecipeImg() {
+    public String getRecipeImg() {
         return recipeImg;
     }
 
-    public void setRecipeImg(File recipeImg) {
+    public void setRecipeImg(String recipeImg) {
         this.recipeImg = recipeImg;
     }
     

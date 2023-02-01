@@ -4,17 +4,35 @@
  */
 package UI;
 
+import Model.ChefRecipe;
+import Model.Recipe;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author nishipancholi
  */
 public class CreateJPanel extends javax.swing.JPanel {
 
+    private ChefRecipe chefRecipeDetails;
+    private String selectedPath;
+    private boolean glutenFree;
+
     /**
      * Creates new form CreateJPanel
      */
     public CreateJPanel() {
         initComponents();
+    }
+
+    CreateJPanel(ChefRecipe chefRecipeDetails) {
+        initComponents();
+        this.chefRecipeDetails = chefRecipeDetails;
     }
 
     /**
@@ -26,8 +44,7 @@ public class CreateJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        yesNoButtonGroup = new javax.swing.ButtonGroup();
         header = new javax.swing.JLabel();
         chefFirstNameLabel = new javax.swing.JLabel();
         chefLastNameLabel = new javax.swing.JLabel();
@@ -61,8 +78,6 @@ public class CreateJPanel extends javax.swing.JPanel {
         imgDisplayField = new javax.swing.JLabel();
         saveBtn = new javax.swing.JButton();
         addRecipeBtn = new javax.swing.JButton();
-
-        jScrollPane1.setViewportView(jTree1);
 
         setBackground(new java.awt.Color(255, 153, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -261,6 +276,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         });
         add(descriptionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 302, 154, -1));
 
+        yesNoButtonGroup.add(yesRadioButton);
         yesRadioButton.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         yesRadioButton.setText("Yes");
         yesRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -270,12 +286,18 @@ public class CreateJPanel extends javax.swing.JPanel {
         });
         add(yesRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 339, -1, -1));
 
+        yesNoButtonGroup.add(noRadioButton);
         noRadioButton.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         noRadioButton.setText("No");
         add(noRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 339, -1, -1));
 
         browseBtn.setBackground(new java.awt.Color(204, 204, 255));
         browseBtn.setText("Browse");
+        browseBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                browseBtnActionPerformed(evt);
+            }
+        });
         add(browseBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 341, -1, -1));
         add(imgDisplayField, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 370, 154, 119));
 
@@ -348,13 +370,60 @@ public class CreateJPanel extends javax.swing.JPanel {
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
+        String firstName = chefFirstNameField.getText();
+        String lastName = chefLastNameField.getText();
+        String userName = chefUserNameField.getText();
+        String email = chefEmailField.getText();
+        String phone = chefPhoneField.getText();
+
+        this.chefRecipeDetails.setChefFirstName(firstName);
+        this.chefRecipeDetails.setChefLastName(lastName);
+        this.chefRecipeDetails.setUserName(userName);
+        this.chefRecipeDetails.setEmail(email);
+        this.chefRecipeDetails.setPhoneNo(phone);
+
+        JOptionPane.showMessageDialog(null, "saved!");
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void addRecipeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecipeBtnActionPerformed
         // TODO add your handling code here:
+        String title = recipeTitleField.getText();
+        int noServings = Integer.valueOf(servingsField.getText());
+        float difficulty = Float.valueOf(difficultyField.getText());
+        int ingredientsNo = Integer.valueOf(ingredientsField.getText());
+        String foodCategory = categoryFoodField.getText();
+        String description = descriptionField.getText();
+        if (yesRadioButton.isSelected()) {
+            this.glutenFree = true;
+        }
+        if (noRadioButton.isSelected()) {
+            this.glutenFree = false;
+        }
+
+        Recipe recipe = this.chefRecipeDetails.createRecipe(title, noServings, this.glutenFree, difficulty, ingredientsNo, foodCategory, description, this.selectedPath);
+        JOptionPane.showMessageDialog(null, "Recipe Added");
     }//GEN-LAST:event_addRecipeBtnActionPerformed
 
+    private void browseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseBtnActionPerformed
+        // TODO add your handling code here:
+        JFileChooser browseImageFile = new JFileChooser();
+        //Filter image extensions
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        browseImageFile.addChoosableFileFilter(fnef);
+        int showOpenDialogue = browseImageFile.showOpenDialog(null);
 
+        if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            this.selectedPath = selectedImagePath;
+            ImageIcon ii = new ImageIcon(this.selectedPath);
+            Image image = ii.getImage().getScaledInstance(imgDisplayField.getWidth(), imgDisplayField.getHeight(), Image.SCALE_SMOOTH);
+
+            imgDisplayField.setIcon(new ImageIcon(image));
+            JOptionPane.showMessageDialog(null, "Image Added!");
+    }//GEN-LAST:event_browseBtnActionPerformed
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addRecipeBtn;
     private javax.swing.JButton browseBtn;
@@ -380,8 +449,6 @@ public class CreateJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel imgLabel;
     private javax.swing.JTextField ingredientsField;
     private javax.swing.JLabel ingredientsLabel;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTree jTree1;
     private javax.swing.JRadioButton noRadioButton;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JLabel recipeLabel;
@@ -390,6 +457,7 @@ public class CreateJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel servingNoLabel;
     private javax.swing.JTextField servingsField;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.ButtonGroup yesNoButtonGroup;
     private javax.swing.JRadioButton yesRadioButton;
     // End of variables declaration//GEN-END:variables
 }
