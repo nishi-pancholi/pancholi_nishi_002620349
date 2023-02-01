@@ -4,11 +4,18 @@
  */
 package UI;
 
+import Model.ChefRecipe;
+import Model.Recipe;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nishipancholi
  */
 public class ReadJPanel extends javax.swing.JPanel {
+    private ChefRecipe chefRecipeDetails;
 
     /**
      * Creates new form ReadJPanel
@@ -17,6 +24,28 @@ public class ReadJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    ReadJPanel(ChefRecipe chefRecipeDetails) {
+        initComponents();
+        this.chefRecipeDetails = chefRecipeDetails;
+        viewDetails(chefRecipeDetails);
+        viewRecipeList();
+    }
+    
+        public void viewDetails(ChefRecipe chefRecipeDetails) {
+        
+        chefFirstNameField.setText(this.chefRecipeDetails.getChefFirstName());
+        chefLastNameField.setText(this.chefRecipeDetails.getChefLastName());
+        chefUserNameField.setText(this.chefRecipeDetails.getUserName());
+        chefEmailField.setText(this.chefRecipeDetails.getEmail());
+        chefPhoneField.setText(this.chefRecipeDetails.getPhoneNo());
+
+    }
+
+    public void viewRecipeList() {
+        for (Recipe foodRecipe : this.chefRecipeDetails.getRecipeList()) {
+            recipeComboBox.addItem(foodRecipe.getTitle());
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,6 +55,7 @@ public class ReadJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        yesNoButtonGroup = new javax.swing.ButtonGroup();
         header = new javax.swing.JLabel();
         chefFirstNameLabel = new javax.swing.JLabel();
         chefLastNameLabel = new javax.swing.JLabel();
@@ -256,6 +286,7 @@ public class ReadJPanel extends javax.swing.JPanel {
         });
         add(descriptionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 302, 154, -1));
 
+        yesNoButtonGroup.add(yesRadioButton);
         yesRadioButton.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         yesRadioButton.setText("Yes");
         yesRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -265,6 +296,7 @@ public class ReadJPanel extends javax.swing.JPanel {
         });
         add(yesRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 339, -1, -1));
 
+        yesNoButtonGroup.add(noRadioButton);
         noRadioButton.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         noRadioButton.setText("No");
         add(noRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 339, -1, -1));
@@ -333,6 +365,30 @@ public class ReadJPanel extends javax.swing.JPanel {
 
     private void showBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showBtnActionPerformed
         // TODO add your handling code here:
+                recipeTitleField.setEnabled(false);
+
+        String recTitle = (String) recipeComboBox.getSelectedItem();
+        Recipe recipe = this.chefRecipeDetails.findRecipe(recTitle);
+        if (!recipe.equals(null)) {
+            recipeTitleField.setText(recTitle);
+            servingsField.setText(String.valueOf(recipe.getNoServings()));
+            difficultyField.setText(String.valueOf(recipe.getDifficulty()));
+            ingredientsField.setText(String.valueOf(recipe.getIngredientsNo()));
+            categoryFoodField.setText(recipe.getFoodCategory());
+            descriptionField.setText(recipe.getDescription());
+            if (recipe.isGlutenFree() == true) {
+                yesRadioButton.setSelected(true);
+            }
+            if (recipe.isGlutenFree() == false) {
+                noRadioButton.setSelected(true);
+            }
+            ImageIcon ii = new ImageIcon(recipe.getRecipeImg());
+            Image image = ii.getImage().getScaledInstance(imgDisplayField.getWidth(), imgDisplayField.getHeight(), Image.SCALE_SMOOTH);
+
+            imgDisplayField.setIcon(new ImageIcon(image));
+        } else {
+            JOptionPane.showMessageDialog(null, "No Recipe Found!");
+        }
     }//GEN-LAST:event_showBtnActionPerformed
 
 
@@ -368,6 +424,7 @@ public class ReadJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField servingsField;
     private javax.swing.JButton showBtn;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.ButtonGroup yesNoButtonGroup;
     private javax.swing.JRadioButton yesRadioButton;
     // End of variables declaration//GEN-END:variables
 }

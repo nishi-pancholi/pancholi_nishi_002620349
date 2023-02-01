@@ -4,11 +4,33 @@
  */
 package UI;
 
+import Model.ChefRecipe;
+import Model.Recipe;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author nishipancholi
  */
 public class UpdateJPanel extends javax.swing.JPanel {
+
+    private ChefRecipe chefRecipeDetails;
+    private Recipe recipePresent;
+    private boolean glutenFree;
+    private String selectedPath;
+
+    UpdateJPanel(ChefRecipe chefRecipeDetails) {
+        initComponents();
+        this.chefRecipeDetails = chefRecipeDetails;
+        display();
+        displayRecipeList();
+
+    }
 
     /**
      * Creates new form UpdateJPanel
@@ -26,6 +48,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        yesNoButtonGroup = new javax.swing.ButtonGroup();
         header = new javax.swing.JLabel();
         chefFirstNameLabel = new javax.swing.JLabel();
         chefLastNameLabel = new javax.swing.JLabel();
@@ -58,8 +81,9 @@ public class UpdateJPanel extends javax.swing.JPanel {
         imgDisplayField = new javax.swing.JLabel();
         recipeComboBox = new javax.swing.JComboBox();
         showBtn = new javax.swing.JButton();
+        updateBtn = new javax.swing.JButton();
+        updateRecipeBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -258,6 +282,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
         });
         add(descriptionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 302, 154, -1));
 
+        yesNoButtonGroup.add(yesRadioButton);
         yesRadioButton.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         yesRadioButton.setText("Yes");
         yesRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -267,6 +292,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
         });
         add(yesRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 339, -1, -1));
 
+        yesNoButtonGroup.add(noRadioButton);
         noRadioButton.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         noRadioButton.setText("No");
         add(noRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 339, -1, -1));
@@ -284,14 +310,48 @@ public class UpdateJPanel extends javax.swing.JPanel {
         });
         add(showBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jButton1.setText("Update");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 111, -1, -1));
+        updateBtn.setBackground(new java.awt.Color(204, 204, 255));
+        updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 111, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 255));
-        jButton2.setText("Update Recipe");
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 434, -1, -1));
+        updateRecipeBtn.setBackground(new java.awt.Color(204, 204, 255));
+        updateRecipeBtn.setText("Update Recipe");
+        updateRecipeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateRecipeBtnActionPerformed(evt);
+            }
+        });
+        add(updateRecipeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 434, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(204, 204, 255));
+        jButton1.setText("Browse");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    public void display() {
+        chefFirstNameField.setText(this.chefRecipeDetails.getChefFirstName());
+        chefLastNameField.setText(this.chefRecipeDetails.getChefLastName());
+        chefUserNameField.setText(this.chefRecipeDetails.getUserName());
+        chefEmailField.setText(this.chefRecipeDetails.getEmail());
+        chefPhoneField.setText(this.chefRecipeDetails.getPhoneNo());
+
+    }
+
+    public void displayRecipeList() {
+        for (Recipe foodRecipe : this.chefRecipeDetails.getRecipeList()) {
+            recipeComboBox.addItem(foodRecipe.getTitle());
+        }
+    }
 
     private void chefFirstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chefFirstNameFieldActionPerformed
         // TODO add your handling code here:
@@ -343,7 +403,89 @@ public class UpdateJPanel extends javax.swing.JPanel {
 
     private void showBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showBtnActionPerformed
         // TODO add your handling code here:
+
+        recipeTitleField.setEnabled(false);
+
+        String recTitle = (String) recipeComboBox.getSelectedItem();
+        Recipe recipe = this.chefRecipeDetails.findRecipe(recTitle);
+        this.recipePresent = recipe;
+        if (!recipe.equals(null)) {
+            recipeTitleField.setText(recTitle);
+            servingsField.setText(String.valueOf(recipe.getNoServings()));
+            difficultyField.setText(String.valueOf(recipe.getDifficulty()));
+            ingredientsField.setText(String.valueOf(recipe.getIngredientsNo()));
+            categoryFoodField.setText(recipe.getFoodCategory());
+            descriptionField.setText(recipe.getDescription());
+            if (recipe.isGlutenFree() == true) {
+                yesRadioButton.setSelected(true);
+            }
+            if (recipe.isGlutenFree() == false) {
+                noRadioButton.setSelected(true);
+            }
+            this.selectedPath= recipe.getRecipeImg();
+            ImageIcon ii = new ImageIcon(this.selectedPath);
+            Image image = ii.getImage().getScaledInstance(imgDisplayField.getWidth(), imgDisplayField.getHeight(), Image.SCALE_SMOOTH);
+
+            imgDisplayField.setIcon(new ImageIcon(image));
+        } else {
+            JOptionPane.showMessageDialog(null, "No Recipe Found!");
+        }
     }//GEN-LAST:event_showBtnActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+        String firstName = chefFirstNameField.getText();
+        String lastName = chefLastNameField.getText();
+        String userName = chefUserNameField.getText();
+        String email = chefEmailField.getText();
+        String phone = chefPhoneField.getText();
+
+        this.chefRecipeDetails.setChefFirstName(firstName);
+        this.chefRecipeDetails.setChefLastName(lastName);
+        this.chefRecipeDetails.setUserName(userName);
+        this.chefRecipeDetails.setEmail(email);
+        this.chefRecipeDetails.setPhoneNo(phone);
+
+        JOptionPane.showMessageDialog(null, "updated!");
+    }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void updateRecipeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateRecipeBtnActionPerformed
+        // TODO add your handling code here:
+        this.recipePresent.setNoServings(Integer.valueOf(servingsField.getText()));
+        this.recipePresent.setDifficulty(Float.valueOf(difficultyField.getText()));
+        this.recipePresent.setIngredientsNo(Integer.valueOf(ingredientsField.getText()));
+        this.recipePresent.setFoodCategory(categoryFoodField.getText());
+        this.recipePresent.setDescription(descriptionField.getText());
+        if (yesRadioButton.isSelected()) {
+            this.glutenFree = true;
+        }
+        if (noRadioButton.isSelected()) {
+            this.glutenFree = false;
+        }
+        this.recipePresent.setGlutenFree(this.glutenFree);
+        this.recipePresent.setRecipeImg(this.selectedPath);
+        JOptionPane.showMessageDialog(null, "Recipe Updated!");
+    }//GEN-LAST:event_updateRecipeBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser browseImageFile = new JFileChooser();
+        //Filter image extensions
+        FileNameExtensionFilter fnef = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        browseImageFile.addChoosableFileFilter(fnef);
+        int showOpenDialogue = browseImageFile.showOpenDialog(null);
+
+        if (showOpenDialogue == JFileChooser.APPROVE_OPTION) {
+            File selectedImageFile = browseImageFile.getSelectedFile();
+            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            this.selectedPath = selectedImagePath;
+            ImageIcon ii = new ImageIcon(this.selectedPath);
+            Image image = ii.getImage().getScaledInstance(imgDisplayField.getWidth(), imgDisplayField.getHeight(), Image.SCALE_SMOOTH);
+
+            imgDisplayField.setIcon(new ImageIcon(image));
+            JOptionPane.showMessageDialog(null, "Image Added!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -370,7 +512,6 @@ public class UpdateJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField ingredientsField;
     private javax.swing.JLabel ingredientsLabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JRadioButton noRadioButton;
     private javax.swing.JLabel phoneLabel;
     private javax.swing.JComboBox recipeComboBox;
@@ -380,6 +521,9 @@ public class UpdateJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField servingsField;
     private javax.swing.JButton showBtn;
     private javax.swing.JLabel titleLabel;
+    private javax.swing.JButton updateBtn;
+    private javax.swing.JButton updateRecipeBtn;
+    private javax.swing.ButtonGroup yesNoButtonGroup;
     private javax.swing.JRadioButton yesRadioButton;
     // End of variables declaration//GEN-END:variables
 }

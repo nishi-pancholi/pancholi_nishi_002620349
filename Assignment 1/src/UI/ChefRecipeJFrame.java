@@ -128,12 +128,12 @@ public class ChefRecipeJFrame extends javax.swing.JFrame {
 
     private void readBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readBtnActionPerformed
         // TODO add your handling code here:
-        mainJSplitPane.setRightComponent(new ReadJPanel());
+        mainJSplitPane.setRightComponent(new ReadJPanel(this.chefRecipeDetails));
     }//GEN-LAST:event_readBtnActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
-        mainJSplitPane.setRightComponent(new UpdateJPanel());
+        mainJSplitPane.setRightComponent(new UpdateJPanel(this.chefRecipeDetails));
     }//GEN-LAST:event_updateBtnActionPerformed
 
     /**
