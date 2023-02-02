@@ -100,91 +100,91 @@ public class UpdateJPanel extends javax.swing.JPanel {
         chefFirstNameLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         chefFirstNameLabel.setForeground(new java.awt.Color(102, 0, 102));
         chefFirstNameLabel.setText("Chef's First Name:");
-        add(chefFirstNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 42, -1, -1));
+        add(chefFirstNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         chefLastNameLabel.setBackground(new java.awt.Color(51, 0, 153));
         chefLastNameLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         chefLastNameLabel.setForeground(new java.awt.Color(102, 0, 102));
         chefLastNameLabel.setText("Chef's Last Name:");
-        add(chefLastNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 70, -1, 23));
+        add(chefLastNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 23));
 
         chefUserNameLabel.setBackground(new java.awt.Color(51, 0, 153));
         chefUserNameLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         chefUserNameLabel.setForeground(new java.awt.Color(102, 0, 102));
         chefUserNameLabel.setText("Username:");
-        add(chefUserNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 103, -1, 23));
+        add(chefUserNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, 23));
 
         recipeLabel.setBackground(new java.awt.Color(51, 0, 153));
         recipeLabel.setFont(new java.awt.Font("Noteworthy", 3, 18)); // NOI18N
         recipeLabel.setForeground(new java.awt.Color(102, 0, 102));
         recipeLabel.setText("Recipe");
-        add(recipeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 236, 71, 27));
+        add(recipeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 71, 27));
 
         contactLabel.setBackground(new java.awt.Color(51, 0, 153));
         contactLabel.setFont(new java.awt.Font("New Peninim MT", 3, 12)); // NOI18N
         contactLabel.setForeground(new java.awt.Color(102, 0, 102));
         contactLabel.setText("CONTACT INFORMATION");
-        add(contactLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 141, 159, 23));
+        add(contactLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 159, 23));
 
         phoneLabel.setBackground(new java.awt.Color(51, 0, 153));
         phoneLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         phoneLabel.setForeground(new java.awt.Color(102, 0, 102));
         phoneLabel.setText("Phone No:");
-        add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 201, -1, 23));
+        add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, 23));
 
         emailLabel.setBackground(new java.awt.Color(51, 0, 153));
         emailLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         emailLabel.setForeground(new java.awt.Color(102, 0, 102));
         emailLabel.setText("Email ID:");
-        add(emailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 169, -1, 23));
+        add(emailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 23));
 
         titleLabel.setBackground(new java.awt.Color(51, 0, 153));
         titleLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(102, 0, 102));
         titleLabel.setText("Title:");
-        add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 269, -1, 23));
+        add(titleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, 23));
 
         servingNoLabel.setBackground(new java.awt.Color(51, 0, 153));
         servingNoLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         servingNoLabel.setForeground(new java.awt.Color(102, 0, 102));
         servingNoLabel.setText("No. of Servings:");
-        add(servingNoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 303, -1, 23));
+        add(servingNoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, 23));
 
         glutenLabel.setBackground(new java.awt.Color(51, 0, 153));
         glutenLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         glutenLabel.setForeground(new java.awt.Color(102, 0, 102));
         glutenLabel.setText("Is Gluten free ?");
-        add(glutenLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 335, -1, 23));
+        add(glutenLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, 23));
 
         difficultyLabel.setBackground(new java.awt.Color(51, 0, 153));
         difficultyLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         difficultyLabel.setForeground(new java.awt.Color(102, 0, 102));
         difficultyLabel.setText("Difficulty Level:");
-        add(difficultyLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 365, -1, 23));
+        add(difficultyLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, 23));
 
         catFoodLabel.setBackground(new java.awt.Color(51, 0, 153));
         catFoodLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         catFoodLabel.setForeground(new java.awt.Color(102, 0, 102));
         catFoodLabel.setText("Category of Food:");
-        add(catFoodLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, -1, 23));
+        add(catFoodLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, 23));
 
         imgLabel.setBackground(new java.awt.Color(51, 0, 153));
         imgLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         imgLabel.setForeground(new java.awt.Color(102, 0, 102));
         imgLabel.setText("Recipe Picture:");
-        add(imgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 341, -1, 23));
+        add(imgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, -1, 23));
 
         ingredientsLabel.setBackground(new java.awt.Color(51, 0, 153));
         ingredientsLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         ingredientsLabel.setForeground(new java.awt.Color(102, 0, 102));
         ingredientsLabel.setText("No. of Ingredients:");
-        add(ingredientsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 403, -1, 23));
+        add(ingredientsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, 23));
 
         descriptionLabel.setBackground(new java.awt.Color(51, 0, 153));
         descriptionLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         descriptionLabel.setForeground(new java.awt.Color(102, 0, 102));
         descriptionLabel.setText("Description:");
-        add(descriptionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 303, -1, 23));
+        add(descriptionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, -1, 23));
 
         chefFirstNameField.setBackground(new java.awt.Color(204, 204, 255));
         chefFirstNameField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -193,7 +193,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 chefFirstNameFieldActionPerformed(evt);
             }
         });
-        add(chefFirstNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 36, 272, -1));
+        add(chefFirstNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 272, -1));
 
         chefLastNameField.setBackground(new java.awt.Color(204, 204, 255));
         chefLastNameField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -202,7 +202,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 chefLastNameFieldActionPerformed(evt);
             }
         });
-        add(chefLastNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 69, 272, -1));
+        add(chefLastNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 272, -1));
 
         chefUserNameField.setBackground(new java.awt.Color(204, 204, 255));
         chefUserNameField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -211,7 +211,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 chefUserNameFieldActionPerformed(evt);
             }
         });
-        add(chefUserNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 102, 272, -1));
+        add(chefUserNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 272, -1));
 
         chefEmailField.setBackground(new java.awt.Color(204, 204, 255));
         chefEmailField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -220,7 +220,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 chefEmailFieldActionPerformed(evt);
             }
         });
-        add(chefEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 165, 272, -1));
+        add(chefEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 272, -1));
 
         servingsField.setBackground(new java.awt.Color(204, 204, 255));
         servingsField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -229,7 +229,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 servingsFieldActionPerformed(evt);
             }
         });
-        add(servingsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 302, 154, -1));
+        add(servingsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 154, -1));
 
         chefPhoneField.setBackground(new java.awt.Color(204, 204, 255));
         chefPhoneField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -238,7 +238,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 chefPhoneFieldActionPerformed(evt);
             }
         });
-        add(chefPhoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 210, 272, -1));
+        add(chefPhoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 272, -1));
 
         recipeTitleField.setBackground(new java.awt.Color(204, 204, 255));
         recipeTitleField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -247,7 +247,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 recipeTitleFieldActionPerformed(evt);
             }
         });
-        add(recipeTitleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 269, 154, -1));
+        add(recipeTitleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 154, -1));
 
         ingredientsField.setBackground(new java.awt.Color(204, 204, 255));
         ingredientsField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -256,7 +256,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 ingredientsFieldActionPerformed(evt);
             }
         });
-        add(ingredientsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 399, 154, -1));
+        add(ingredientsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 154, -1));
 
         difficultyField.setBackground(new java.awt.Color(204, 204, 255));
         difficultyField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -265,7 +265,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 difficultyFieldActionPerformed(evt);
             }
         });
-        add(difficultyField, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 364, 154, -1));
+        add(difficultyField, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 154, -1));
 
         categoryFoodField.setBackground(new java.awt.Color(204, 204, 255));
         categoryFoodField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -274,7 +274,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 categoryFoodFieldActionPerformed(evt);
             }
         });
-        add(categoryFoodField, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 269, 154, -1));
+        add(categoryFoodField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 154, -1));
 
         descriptionField.setBackground(new java.awt.Color(204, 204, 255));
         descriptionField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -283,7 +283,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 descriptionFieldActionPerformed(evt);
             }
         });
-        add(descriptionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 302, 154, -1));
+        add(descriptionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 154, -1));
 
         yesNoButtonGroup.add(yesRadioButton);
         yesRadioButton.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
@@ -293,16 +293,16 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 yesRadioButtonActionPerformed(evt);
             }
         });
-        add(yesRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 339, -1, -1));
+        add(yesRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, -1, -1));
 
         yesNoButtonGroup.add(noRadioButton);
         noRadioButton.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         noRadioButton.setText("No");
-        add(noRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 339, -1, -1));
-        add(imgDisplayField, new org.netbeans.lib.awtextra.AbsoluteConstraints(449, 370, 154, 119));
+        add(noRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, -1));
+        add(imgDisplayField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 154, 119));
 
         recipeComboBox.setBackground(new java.awt.Color(204, 204, 255));
-        add(recipeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 156, -1));
+        add(recipeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 156, -1));
 
         showBtn.setBackground(new java.awt.Color(204, 204, 255));
         showBtn.setText("Show");
@@ -311,7 +311,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 showBtnActionPerformed(evt);
             }
         });
-        add(showBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, -1, -1));
+        add(showBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
 
         updateBtn.setBackground(new java.awt.Color(204, 204, 255));
         updateBtn.setText("Update");
@@ -320,7 +320,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 updateBtnActionPerformed(evt);
             }
         });
-        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 111, -1, -1));
+        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
 
         updateRecipeBtn.setBackground(new java.awt.Color(204, 204, 255));
         updateRecipeBtn.setText("Update Recipe");
@@ -329,7 +329,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 updateRecipeBtnActionPerformed(evt);
             }
         });
-        add(updateRecipeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 434, -1, -1));
+        add(updateRecipeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 470, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(204, 204, 255));
         jButton1.setText("Browse");
@@ -338,10 +338,11 @@ public class UpdateJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     public void display() {
+        chefUserNameField.setEnabled(false);
         chefFirstNameField.setText(this.chefRecipeDetails.getChefFirstName());
         chefLastNameField.setText(this.chefRecipeDetails.getChefLastName());
         chefUserNameField.setText(this.chefRecipeDetails.getUserName());

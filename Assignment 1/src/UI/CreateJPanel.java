@@ -120,19 +120,19 @@ public class CreateJPanel extends javax.swing.JPanel {
         contactLabel.setFont(new java.awt.Font("New Peninim MT", 3, 12)); // NOI18N
         contactLabel.setForeground(new java.awt.Color(102, 0, 102));
         contactLabel.setText("CONTACT INFORMATION");
-        add(contactLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 141, 159, 23));
+        add(contactLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 159, 20));
 
         phoneLabel.setBackground(new java.awt.Color(51, 0, 153));
         phoneLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         phoneLabel.setForeground(new java.awt.Color(102, 0, 102));
         phoneLabel.setText("Phone No:");
-        add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 201, -1, 23));
+        add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 23));
 
         emailLabel.setBackground(new java.awt.Color(51, 0, 153));
         emailLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
         emailLabel.setForeground(new java.awt.Color(102, 0, 102));
         emailLabel.setText("Email ID:");
-        add(emailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 169, -1, 23));
+        add(emailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 23));
 
         titleLabel.setBackground(new java.awt.Color(51, 0, 153));
         titleLabel.setFont(new java.awt.Font("New Peninim MT", 2, 12)); // NOI18N
@@ -216,7 +216,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                 chefEmailFieldActionPerformed(evt);
             }
         });
-        add(chefEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 165, 272, -1));
+        add(chefEmailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 272, -1));
 
         servingsField.setBackground(new java.awt.Color(204, 204, 255));
         servingsField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -234,7 +234,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                 chefPhoneFieldActionPerformed(evt);
             }
         });
-        add(chefPhoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 210, 272, -1));
+        add(chefPhoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 272, -1));
 
         recipeTitleField.setBackground(new java.awt.Color(204, 204, 255));
         recipeTitleField.setFont(new java.awt.Font("Hiragino Sans GB", 0, 13)); // NOI18N
@@ -313,7 +313,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                 saveBtnActionPerformed(evt);
             }
         });
-        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 118, -1, -1));
+        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
 
         addRecipeBtn.setBackground(new java.awt.Color(204, 204, 255));
         addRecipeBtn.setText("Add Recipe");
@@ -322,7 +322,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                 addRecipeBtnActionPerformed(evt);
             }
         });
-        add(addRecipeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 481, -1, -1));
+        add(addRecipeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 480, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void chefFirstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chefFirstNameFieldActionPerformed
