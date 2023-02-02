@@ -6,8 +6,10 @@ package UI;
 
 import Model.ChefRecipe;
 import Model.Recipe;
+import Model.Validations;
 import java.awt.Image;
 import java.io.File;
+import java.util.UUID;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -20,6 +22,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class CreateJPanel extends javax.swing.JPanel {
 
     private ChefRecipe chefRecipeDetails;
+    private Validations validation;
     private String selectedPath;
     private boolean glutenFree;
 
@@ -28,11 +31,13 @@ public class CreateJPanel extends javax.swing.JPanel {
      */
     public CreateJPanel() {
         initComponents();
+
     }
 
     CreateJPanel(ChefRecipe chefRecipeDetails) {
         initComponents();
         this.chefRecipeDetails = chefRecipeDetails;
+        this.validation = new Validations();
     }
 
     /**
@@ -370,27 +375,37 @@ public class CreateJPanel extends javax.swing.JPanel {
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
+
+        chefUserNameField.setEnabled(false);
         String firstName = chefFirstNameField.getText();
         String lastName = chefLastNameField.getText();
-        String userName = chefUserNameField.getText();
+        String randomUserName = UUID.randomUUID().toString();
+        chefUserNameField.setText(randomUserName);
+
         String email = chefEmailField.getText();
         String phone = chefPhoneField.getText();
 
-        this.chefRecipeDetails.setChefFirstName(firstName);
-        this.chefRecipeDetails.setChefLastName(lastName);
-        this.chefRecipeDetails.setUserName(userName);
-        this.chefRecipeDetails.setEmail(email);
-        this.chefRecipeDetails.setPhoneNo(phone);
+        boolean isFirstNameValid = this.validation.checkName(firstName);
+        boolean isLastNameValid = this.validation.checkName(lastName);
+        boolean isEmailValid = this.validation.checkEmail(email);
+        boolean isPhoneValid = this.validation.checkPhone(phone);
 
-        JOptionPane.showMessageDialog(null, "saved!");
+        if (isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid) {
+            this.chefRecipeDetails.setChefFirstName(firstName);
+            this.chefRecipeDetails.setChefLastName(lastName);
+            this.chefRecipeDetails.setUserName(randomUserName);
+            this.chefRecipeDetails.setEmail(email);
+            this.chefRecipeDetails.setPhoneNo(phone);
+            JOptionPane.showMessageDialog(null, "saved!");
+        }
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void addRecipeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecipeBtnActionPerformed
         // TODO add your handling code here:
         String title = recipeTitleField.getText();
-        int noServings = Integer.valueOf(servingsField.getText());
-        float difficulty = Float.valueOf(difficultyField.getText());
-        int ingredientsNo = Integer.valueOf(ingredientsField.getText());
+        String noServings = servingsField.getText();
+        String difficulty = difficultyField.getText();
+        String ingredientsNo = ingredientsField.getText();
         String foodCategory = categoryFoodField.getText();
         String description = descriptionField.getText();
         if (yesRadioButton.isSelected()) {
@@ -400,8 +415,20 @@ public class CreateJPanel extends javax.swing.JPanel {
             this.glutenFree = false;
         }
 
-        Recipe recipe = this.chefRecipeDetails.createRecipe(title, noServings, this.glutenFree, difficulty, ingredientsNo, foodCategory, description, this.selectedPath);
-        JOptionPane.showMessageDialog(null, "Recipe Added");
+        boolean isTitleValid = this.validation.checkNullEmpty(title);
+        boolean isServingsValid = this.validation.checkNoNegativeZero(String.valueOf(noServings));
+        boolean isDifficultyValid = this.validation.checkRange(String.valueOf(difficulty));
+        boolean isIngredientsValid = this.validation.checkNoNegativeZero(String.valueOf(ingredientsNo));
+        boolean isCategoryFieldValid = this.validation.checkNullEmpty(foodCategory);
+        boolean isDescriptionValid = this.validation.checkNullEmpty(description);
+        boolean isGlutenValid = this.validation.checkNullEmpty(String.valueOf(this.glutenFree));
+        boolean isImgValid = this.validation.checkNullEmpty(this.selectedPath);
+
+        if (isTitleValid && isServingsValid && isDifficultyValid && isIngredientsValid && isCategoryFieldValid && isDescriptionValid && isGlutenValid && isImgValid) {
+
+            Recipe recipe = this.chefRecipeDetails.createRecipe(title, Integer.valueOf(noServings), this.glutenFree, Float.valueOf(difficulty), Double.valueOf(ingredientsNo), foodCategory, description, this.selectedPath);
+            JOptionPane.showMessageDialog(null, "Recipe Added");
+        }
     }//GEN-LAST:event_addRecipeBtnActionPerformed
 
     private void browseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseBtnActionPerformed

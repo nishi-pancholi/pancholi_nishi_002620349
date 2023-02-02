@@ -71,7 +71,7 @@ public class ChefRecipe {
         this.phoneNo = phoneNo;
     }
     
-    public Recipe createRecipe(String title, int noServings,boolean glutenFree,float difficulty,int ingredientsNo, String foodCategory,String description, String recipeImg){
+    public Recipe createRecipe(String title, int noServings,boolean glutenFree,float difficulty,double ingredientsNo, String foodCategory,String description, String recipeImg){
         
         Recipe recipeDetails=new Recipe();
         

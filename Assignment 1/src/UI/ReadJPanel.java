@@ -32,7 +32,7 @@ public class ReadJPanel extends javax.swing.JPanel {
     }
     
         public void viewDetails(ChefRecipe chefRecipeDetails) {
-        
+        chefUserNameField.setEnabled(false);
         chefFirstNameField.setText(this.chefRecipeDetails.getChefFirstName());
         chefLastNameField.setText(this.chefRecipeDetails.getChefLastName());
         chefUserNameField.setText(this.chefRecipeDetails.getUserName());

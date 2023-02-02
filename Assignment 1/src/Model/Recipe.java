@@ -15,7 +15,7 @@ public class Recipe {
     int noServings;
     boolean glutenFree;
     float difficulty;
-    int ingredientsNo;
+    double ingredientsNo;
     String foodCategory;
     String description;
     String recipeImg;
@@ -52,11 +52,11 @@ public class Recipe {
         this.difficulty = difficulty;
     }
 
-    public int getIngredientsNo() {
+    public double getIngredientsNo() {
         return ingredientsNo;
     }
 
-    public void setIngredientsNo(int ingredientsNo) {
+    public void setIngredientsNo(double ingredientsNo) {
         this.ingredientsNo = ingredientsNo;
     }
 
