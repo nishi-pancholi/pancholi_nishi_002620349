@@ -49,6 +49,6 @@ public class PlanDetail {
     
     @Override
     public String toString(){
-        return this.planName;
+        return String.valueOf(this.planId);
     }   
 }

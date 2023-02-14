@@ -6,6 +6,7 @@ package UI;
 
 import Model.Business;
 import Model.InsurancePlans;
+import Model.Validation;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
 public class AddInsurancePlansJPanel extends javax.swing.JPanel {
 
     private Business business;
+    private Validation validation;
     /**
      * Creates new form InsurancePlansJPanel
      */
@@ -25,6 +27,7 @@ public class AddInsurancePlansJPanel extends javax.swing.JPanel {
     AddInsurancePlansJPanel(Business business) {
         initComponents();
         this.business=business;
+        this.validation = new Validation();
     }
 
     /**
@@ -91,18 +94,24 @@ public class AddInsurancePlansJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         InsurancePlans plan=this.business.getInsurancePlan();
         
-        int id = Integer.valueOf(planIdfield.getText());
+        String id = planIdfield.getText();
         String name = planNameField.getText();
         String costPerMonth = costMonthField.getText();
         String costPerAnnum= costAnnualField.getText();
         
-        if(plan.checkIfPlanUnique(id))
-        {
-        plan.createInsurancePlan(id, name, Float.valueOf(costPerMonth), Float.valueOf(costPerAnnum));
-        JOptionPane.showMessageDialog(null,"Plan Added");
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Id should be unique");
+        boolean isIdNotNull = this.validation.checkNullEmpty(id);
+        boolean isNameNotNull = this.validation.checkNullEmpty(name);
+        boolean isMonthlyCostNotNull = this.validation.checkNullEmpty(costPerMonth);
+        boolean isAnnualCostNotNull = this.validation.checkNullEmpty(costPerAnnum);
+        if(isIdNotNull && isNameNotNull && isMonthlyCostNotNull && isAnnualCostNotNull){
+            if(plan.checkIfPlanUnique(Integer.valueOf(id)))
+            {
+            plan.createInsurancePlan(Integer.valueOf(id), name, Float.valueOf(costPerMonth), Float.valueOf(costPerAnnum));
+            JOptionPane.showMessageDialog(null,"Plan Added");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Id should be unique");
+            }
         }
     }//GEN-LAST:event_addInsPlanbtnActionPerformed
 

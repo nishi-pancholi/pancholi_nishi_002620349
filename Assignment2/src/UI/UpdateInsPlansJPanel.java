@@ -6,6 +6,7 @@ package UI;
 
 import Model.Business;
 import Model.PlanDetail;
+import Model.Validation;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +19,7 @@ public class UpdateInsPlansJPanel extends javax.swing.JPanel {
     private Business business;
     DefaultTableModel planTableModel;
     private PlanDetail selectedPlan;
+    private Validation validation;
 
     /**
      * Creates new form UpdateInsPlansJPanel
@@ -30,6 +32,7 @@ public class UpdateInsPlansJPanel extends javax.swing.JPanel {
         initComponents();
         this.business=business;
         this.planTableModel=(DefaultTableModel) planTable.getModel();
+        this.validation = new Validation();
         displayPlans();
     }
     
@@ -162,10 +165,16 @@ public class UpdateInsPlansJPanel extends javax.swing.JPanel {
 
     private void updatePlanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePlanBtnActionPerformed
         // TODO add your handling code here:
-        this.selectedPlan.setPlanName(planNameField.getText());
-        this.selectedPlan.setCostPerMonth(Float.valueOf(monthlyCostField.getText()));
-        this.selectedPlan.setCostPerAnnum(Float.valueOf(annualCostField.getText()));
-        displayPlans();
+        boolean isNameNotNull = this.validation.checkNullEmpty(planNameField.getText());
+        boolean isMonthlyCostNotNull = this.validation.checkNullEmpty(monthlyCostField.getText());
+        boolean isAnnualCostNotNull = this.validation.checkNullEmpty(annualCostField.getText());
+        
+        if(isNameNotNull && isMonthlyCostNotNull && isAnnualCostNotNull){
+            this.selectedPlan.setPlanName(planNameField.getText());
+            this.selectedPlan.setCostPerMonth(Float.valueOf(monthlyCostField.getText()));
+            this.selectedPlan.setCostPerAnnum(Float.valueOf(annualCostField.getText()));
+            displayPlans();
+        }
     }//GEN-LAST:event_updatePlanBtnActionPerformed
 
     private void monthlyCostFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_monthlyCostFieldFocusLost
