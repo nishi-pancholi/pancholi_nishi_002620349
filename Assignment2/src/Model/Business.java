@@ -10,9 +10,11 @@ package Model;
  */
 public class Business {
     InsurancePlans insurancePlan;
+    ApplicantDirectory applicantDirectory;
     
     public Business(){
         this.insurancePlan = new InsurancePlans();
+        this.applicantDirectory = new ApplicantDirectory();
     }
 
     public InsurancePlans getInsurancePlan() {
@@ -22,6 +24,14 @@ public class Business {
     public void setInsurancePlan(InsurancePlans insurancePlan) {
         this.insurancePlan = insurancePlan;
     }
-    
+
+    public ApplicantDirectory getApplicantDirectory() {
+        return applicantDirectory;
+    }
+
+    public void setApplicantDirectory(ApplicantDirectory applicantDirectory) {
+        this.applicantDirectory = applicantDirectory;
+    }
+  
     
 }

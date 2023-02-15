@@ -9,5 +9,23 @@ package Model;
  * @author nishipancholi
  */
 public class Vaccine {
+    String vaccineName;
+    boolean courseCompleted;
+
+    public String getVaccineName() {
+        return vaccineName;
+    }
+
+    public void setVaccineName(String vaccineName) {
+        this.vaccineName = vaccineName;
+    }
+
+    public boolean isCourseCompleted() {
+        return courseCompleted;
+    }
+
+    public void setCourseCompleted(boolean courseCompleted) {
+        this.courseCompleted = courseCompleted;
+    }
     
 }
