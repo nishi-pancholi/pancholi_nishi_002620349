@@ -5,6 +5,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -64,6 +65,15 @@ public class Pet {
 
     public void setVaccineList(ArrayList<Vaccine> vaccineList) {
         this.vaccineList = vaccineList;
+    }
+    
+    public Vaccine createVaccine(String vaccineName,boolean courseCompleted){
+        Vaccine vaccine= new Vaccine();
+        vaccine.setVaccineName(vaccineName);
+        vaccine.setCourseCompleted(courseCompleted);
+        this.vaccineList.add(vaccine);
+         
+        return vaccine;
     }
     
 }

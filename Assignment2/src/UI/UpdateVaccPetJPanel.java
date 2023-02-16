@@ -4,17 +4,25 @@
  */
 package UI;
 
+import Model.Business;
+
 /**
  *
  * @author nishipancholi
  */
 public class UpdateVaccPetJPanel extends javax.swing.JPanel {
 
+    private Business business;
     /**
      * Creates new form UpdateVaccPetJPanel
      */
     public UpdateVaccPetJPanel() {
         initComponents();
+    }
+
+    UpdateVaccPetJPanel(Business business) {
+        initComponents();
+        this.business=business;
     }
 
     /**

@@ -14,6 +14,7 @@ public class PlanDetail {
     String planName;
     float costPerMonth;
     float costPerAnnum;
+    
 
     public int getPlanId() {
         return planId;

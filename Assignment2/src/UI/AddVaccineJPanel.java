@@ -4,17 +4,25 @@
  */
 package UI;
 
+import Model.Business;
+
 /**
  *
  * @author nishipancholi
  */
 public class AddVaccineJPanel extends javax.swing.JPanel {
 
+    private Business business;
     /**
      * Creates new form AddVaccineJPanel
      */
     public AddVaccineJPanel() {
         initComponents();
+    }
+
+    AddVaccineJPanel(Business business) {
+        initComponents();
+        this.business=business;
     }
 
     /**

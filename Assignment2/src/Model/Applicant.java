@@ -17,6 +17,7 @@ public class Applicant {
     String ownerLastName;
     Date applicationDate;
     private Pet petDetails;
+    private PlanDetail insPlan;
 
     public Applicant(){
         this.petDetails= new Pet();
@@ -60,6 +61,27 @@ public class Applicant {
     public void setPetDetails(Pet petDetails) {
         this.petDetails = petDetails;
     }
+
+    public PlanDetail getInsPlan() {
+        return insPlan;
+    }
+
+    public void setInsPlan(PlanDetail insPlan) {
+        this.insPlan = insPlan;
+    }
+     
+    public Pet createPet(String  petName,int petAge,String petType,String petGender,String petBreed){
+        Pet pet=new Pet();
+        pet.setPetName(petName);
+        pet.setPetBreed(petBreed);
+        pet.setPetGender(petGender);
+        pet.setPetType(petType);
+        pet.setPetAge(petAge);
+        this.setPetDetails(pet);
+         
+        return pet;
+    }
+
     
     @Override
     public String toString(){

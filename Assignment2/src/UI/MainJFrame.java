@@ -34,6 +34,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         addPlanBtn = new javax.swing.JButton();
         updatePlanBtn = new javax.swing.JButton();
+        createApplicationBtn = new javax.swing.JButton();
+        addVaccineBtn = new javax.swing.JButton();
+        updatePetVaccBtn = new javax.swing.JButton();
+        searchDelAppBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,7 +61,39 @@ public class MainJFrame extends javax.swing.JFrame {
                 updatePlanBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(updatePlanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 180, -1));
+        jPanel1.add(updatePlanBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 180, -1));
+
+        createApplicationBtn.setText("Create Application");
+        createApplicationBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createApplicationBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(createApplicationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 220, -1));
+
+        addVaccineBtn.setText("Add Vaccine Details");
+        addVaccineBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addVaccineBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addVaccineBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 190, -1));
+
+        updatePetVaccBtn.setText("Update Pet & Vaccine");
+        updatePetVaccBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePetVaccBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(updatePetVaccBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 190, -1));
+
+        searchDelAppBtn.setText("Search & Delete Application");
+        searchDelAppBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchDelAppBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(searchDelAppBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 220, -1));
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -79,6 +115,26 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         jSplitPane1.setRightComponent(new UpdateInsPlansJPanel(this.business));
     }//GEN-LAST:event_updatePlanBtnActionPerformed
+
+    private void createApplicationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createApplicationBtnActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new CreateApplicationJPanel(this.business));
+    }//GEN-LAST:event_createApplicationBtnActionPerformed
+
+    private void searchDelAppBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDelAppBtnActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new SearchDelAppJPanel(this.business));
+    }//GEN-LAST:event_searchDelAppBtnActionPerformed
+
+    private void addVaccineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVaccineBtnActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new AddVaccineJPanel(this.business));
+    }//GEN-LAST:event_addVaccineBtnActionPerformed
+
+    private void updatePetVaccBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePetVaccBtnActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new UpdateVaccPetJPanel(this.business));
+    }//GEN-LAST:event_updatePetVaccBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,9 +173,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPlanBtn;
+    private javax.swing.JButton addVaccineBtn;
+    private javax.swing.JButton createApplicationBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JButton searchDelAppBtn;
+    private javax.swing.JButton updatePetVaccBtn;
     private javax.swing.JButton updatePlanBtn;
     // End of variables declaration//GEN-END:variables
 }

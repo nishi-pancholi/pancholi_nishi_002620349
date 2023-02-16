@@ -4,17 +4,37 @@
  */
 package UI;
 
+import Model.Applicant;
+import Model.ApplicantDirectory;
+import Model.Business;
+import Model.Pet;
+import Model.PlanDetail;
+import Model.Validation;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nishipancholi
  */
 public class CreateApplicationJPanel extends javax.swing.JPanel {
 
+    private Business business;
+    private Applicant currentApplication;
+    private Validation validation;
     /**
      * Creates new form ApplicationJPanel
      */
     public CreateApplicationJPanel() {
         initComponents();
+    }
+
+    CreateApplicationJPanel(Business business) {
+        initComponents();
+        this.business=business;
+        this.validation = new Validation();
+        populateDropdown();
     }
 
     /**
@@ -26,19 +46,233 @@ public class CreateApplicationJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel1 = new javax.swing.JPanel();
+        idLabel = new javax.swing.JLabel();
+        lastNameLabel = new javax.swing.JLabel();
+        dateLabel = new javax.swing.JLabel();
+        firstNameLabel = new javax.swing.JLabel();
+        breedLabel = new javax.swing.JLabel();
+        petLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        ageLabel = new javax.swing.JLabel();
+        genderLabel = new javax.swing.JLabel();
+        typeLabel = new javax.swing.JLabel();
+        ownerLabel = new javax.swing.JLabel();
+        addAppBtn = new javax.swing.JButton();
+        insPlanComboBox = new javax.swing.JComboBox();
+        choosePlanLabel = new javax.swing.JLabel();
+        assignBtn = new javax.swing.JButton();
+        breedField = new javax.swing.JTextField();
+        idField = new javax.swing.JTextField();
+        firstNameField = new javax.swing.JTextField();
+        lastNameField = new javax.swing.JTextField();
+        nameField = new javax.swing.JTextField();
+        ageField = new javax.swing.JTextField();
+        genderField = new javax.swing.JTextField();
+        typeField = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        assignLabel = new javax.swing.JLabel();
+        insPlanLabel = new javax.swing.JLabel();
+
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        idLabel.setText("Application Id");
+        jPanel1.add(idLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        lastNameLabel.setText("Owner Last Name");
+        jPanel1.add(lastNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+
+        dateLabel.setText("Application Date");
+        jPanel1.add(dateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        firstNameLabel.setText("Owner First Name");
+        jPanel1.add(firstNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+
+        breedLabel.setText("Breed");
+        jPanel1.add(breedLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+
+        petLabel.setText("Pet Details");
+        jPanel1.add(petLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
+
+        nameLabel.setText("Name");
+        jPanel1.add(nameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
+
+        ageLabel.setText("Age");
+        jPanel1.add(ageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, 20));
+
+        genderLabel.setText("Gender");
+        jPanel1.add(genderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
+
+        typeLabel.setText("Type");
+        jPanel1.add(typeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
+
+        ownerLabel.setText("Add Owner");
+        jPanel1.add(ownerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        addAppBtn.setText("Add Application");
+        addAppBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAppBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addAppBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, -1));
+
+        insPlanComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insPlanComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(insPlanComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 210, -1));
+
+        choosePlanLabel.setText("Choose Insurance Plan");
+        jPanel1.add(choosePlanLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+
+        assignBtn.setText("Assign");
+        assignBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(assignBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
+        jPanel1.add(breedField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 220, -1));
+        jPanel1.add(idField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 220, -1));
+        jPanel1.add(firstNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 220, -1));
+        jPanel1.add(lastNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 220, -1));
+        jPanel1.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 220, -1));
+        jPanel1.add(ageField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 220, -1));
+        jPanel1.add(genderField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 220, -1));
+        jPanel1.add(typeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 220, -1));
+
+        jDateChooser1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jDateChooser1FocusLost(evt);
+            }
+        });
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 220, -1));
+
+        assignLabel.setText("Assigned Insurance plan to this Application is:");
+        jPanel1.add(assignLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 280, -1));
+
+        insPlanLabel.setText("none");
+        jPanel1.add(insPlanLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addAppBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAppBtnActionPerformed
+        // TODO add your handling code here:
+        ApplicantDirectory applicant= this.business.getApplicantDirectory();
+        
+        String id= idField.getText();
+        String ownerFirstName= firstNameField.getText();
+        String ownerLastName= lastNameField.getText();
+        Date appDate= jDateChooser1.getDate();
+        
+        String petName= nameField.getText();
+        String petAge = ageField.getText();
+        String petGender= genderField.getText();
+        String petBreed= breedField.getText();
+        String petType= typeField.getText();
+        
+        boolean isIdNotNull = this.validation.checkNullEmpty(id);
+        boolean isFirstNameNotNull = this.validation.checkNullEmpty(ownerFirstName);
+        boolean isLastNameNotNull = this.validation.checkNullEmpty(ownerLastName);
+        boolean isPetNameNotNull = this.validation.checkNullEmpty(petName);
+        boolean isPetAgeNotNull = this.validation.checkNullEmpty(petAge);
+        boolean isPetBreedNotNull = this.validation.checkNullEmpty(petBreed);
+        boolean isPetTypeNotNull = this.validation.checkNullEmpty(petType);
+        boolean isPetGenderNotNull = this.validation.checkNullEmpty(petGender);
+        boolean isAppDateNotNull= checkDate();
+        
+        boolean isAllFieldsFilled= isIdNotNull && isFirstNameNotNull && isLastNameNotNull && isAppDateNotNull && isPetNameNotNull && isPetAgeNotNull && isPetBreedNotNull && isPetTypeNotNull && isPetGenderNotNull;
+        
+        if(applicant.checkIfApplicationUnique(Integer.valueOf(id))){
+            if(isAllFieldsFilled){
+                    Applicant currentApplication=applicant.createApplicant(Integer.valueOf(id), ownerFirstName, ownerLastName, appDate);
+                    this.currentApplication = currentApplication;
+                    Pet pet=this.currentApplication.createPet(petName,Integer.valueOf(petAge),petType,petGender,petBreed);
+                    JOptionPane.showMessageDialog(null,"Application Added");
+                    JOptionPane.showMessageDialog(null,"Please make sure to assign an Insurance Plan!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Id should be unique");
+        }
+        
+    }//GEN-LAST:event_addAppBtnActionPerformed
+
+    private void insPlanComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insPlanComboBoxActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_insPlanComboBoxActionPerformed
+
+    private void assignBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignBtnActionPerformed
+        // TODO add your handling code here:
+        if(this.currentApplication!=null){
+            PlanDetail plan =(PlanDetail) insPlanComboBox.getSelectedItem();
+            this.currentApplication.setInsPlan(plan);
+
+            if(this.currentApplication.getInsPlan() != null) {
+                insPlanLabel.setText(this.currentApplication.getInsPlan().getPlanName());
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please add application First!");
+        }
+        
+    }//GEN-LAST:event_assignBtnActionPerformed
+
+    private void jDateChooser1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDateChooser1FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooser1FocusLost
+
+    public boolean checkDate(){
+        Date appDate= jDateChooser1.getDate();
+        if (appDate== null) {
+            JOptionPane.showMessageDialog(null, "Please fill out the date!");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    public void populateDropdown(){
+        ArrayList<PlanDetail> insurancePlans= this.business.getInsurancePlan().getInsurancePlanList();
+        
+        for(PlanDetail plan:insurancePlans){
+            System.out.println(plan);
+            insPlanComboBox.addItem(plan);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addAppBtn;
+    private javax.swing.JTextField ageField;
+    private javax.swing.JLabel ageLabel;
+    private javax.swing.JButton assignBtn;
+    private javax.swing.JLabel assignLabel;
+    private javax.swing.JTextField breedField;
+    private javax.swing.JLabel breedLabel;
+    private javax.swing.JLabel choosePlanLabel;
+    private javax.swing.JLabel dateLabel;
+    private javax.swing.JTextField firstNameField;
+    private javax.swing.JLabel firstNameLabel;
+    private javax.swing.JTextField genderField;
+    private javax.swing.JLabel genderLabel;
+    private javax.swing.JTextField idField;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JComboBox insPlanComboBox;
+    private javax.swing.JLabel insPlanLabel;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField lastNameField;
+    private javax.swing.JLabel lastNameLabel;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel ownerLabel;
+    private javax.swing.JLabel petLabel;
+    private javax.swing.JTextField typeField;
+    private javax.swing.JLabel typeLabel;
     // End of variables declaration//GEN-END:variables
 }
