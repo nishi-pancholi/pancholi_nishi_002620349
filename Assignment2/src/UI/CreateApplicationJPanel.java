@@ -194,6 +194,7 @@ public class CreateApplicationJPanel extends javax.swing.JPanel {
                     Applicant currentApplication=applicant.createApplicant(Integer.valueOf(id), ownerFirstName, ownerLastName, appDate);
                     this.currentApplication = currentApplication;
                     Pet pet=this.currentApplication.createPet(petName,Integer.valueOf(petAge),petType,petGender,petBreed);
+                    insPlanLabel.setText("none");
                     JOptionPane.showMessageDialog(null,"Application Added");
                     JOptionPane.showMessageDialog(null,"Please make sure to assign an Insurance Plan!");
             }

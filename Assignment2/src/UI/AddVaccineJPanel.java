@@ -4,7 +4,13 @@
  */
 package UI;
 
+import Model.Applicant;
 import Model.Business;
+import Model.Pet;
+import Model.Vaccine;
+import Model.Validation;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,6 +19,7 @@ import Model.Business;
 public class AddVaccineJPanel extends javax.swing.JPanel {
 
     private Business business;
+    private Validation validation;
     /**
      * Creates new form AddVaccineJPanel
      */
@@ -23,6 +30,8 @@ public class AddVaccineJPanel extends javax.swing.JPanel {
     AddVaccineJPanel(Business business) {
         initComponents();
         this.business=business;
+        this.validation = new Validation();
+        populateDropdown();
     }
 
     /**
@@ -34,19 +43,86 @@ public class AddVaccineJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel1 = new javax.swing.JPanel();
+        petComboBox = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        courseCompletedCheckBox = new javax.swing.JCheckBox();
+        vaccNameField = new javax.swing.JTextField();
+        addVaccDetailBtn = new javax.swing.JButton();
+
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 204, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.add(petComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 250, -1));
+
+        jLabel1.setText("Select Pet");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 160, -1));
+
+        jLabel2.setText("Vaccine Name:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 110, -1));
+
+        courseCompletedCheckBox.setText("Check if the Course Is Completed");
+        courseCompletedCheckBox.setToolTipText("");
+        courseCompletedCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseCompletedCheckBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(courseCompletedCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 220, -1));
+        jPanel1.add(vaccNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 190, -1));
+
+        addVaccDetailBtn.setText("Add Vaccine Detail");
+        addVaccDetailBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addVaccDetailBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addVaccDetailBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, -1, -1));
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    public void populateDropdown(){
+        ArrayList<Applicant> appDetail= this.business.getApplicantDirectory().getApplicantList();
+        
+        for(Applicant app:appDetail){
+            Pet pet= app.getPetDetails();
+            petComboBox.addItem(pet);
+        }
+    }
+    
+    private void courseCompletedCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseCompletedCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_courseCompletedCheckBoxActionPerformed
+
+    private void addVaccDetailBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVaccDetailBtnActionPerformed
+        // TODO add your handling code here:
+        Pet petDetails =(Pet) petComboBox.getSelectedItem();
+        
+        String name=vaccNameField.getText();
+        boolean courseCompleted;
+        if(courseCompletedCheckBox.isSelected()){
+            courseCompleted=true;
+        }
+        else{
+            courseCompleted=false;
+        }
+        
+        Vaccine vacc= petDetails.createVaccine(name, courseCompleted);
+        JOptionPane.showMessageDialog(null,"Vaccine Added");
+    }//GEN-LAST:event_addVaccDetailBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addVaccDetailBtn;
+    private javax.swing.JCheckBox courseCompletedCheckBox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox petComboBox;
+    private javax.swing.JTextField vaccNameField;
     // End of variables declaration//GEN-END:variables
 }

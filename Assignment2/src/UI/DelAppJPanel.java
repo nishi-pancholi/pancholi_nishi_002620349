@@ -15,18 +15,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author nishipancholi
  */
-public class SearchDelAppJPanel extends javax.swing.JPanel {
+public class DelAppJPanel extends javax.swing.JPanel {
 
     private Business business;
     DefaultTableModel viewTableModel;
     /**
      * Creates new form SearchAppJPanel
      */
-    public SearchDelAppJPanel() {
+    public DelAppJPanel() {
         initComponents();
     }
 
-    SearchDelAppJPanel(Business business) {
+    DelAppJPanel(Business business) {
         initComponents();
         this.business=business;
         this.viewTableModel= (DefaultTableModel) viewTable.getModel();

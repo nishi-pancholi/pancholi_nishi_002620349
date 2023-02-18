@@ -55,6 +55,25 @@ public class ApplicantDirectory {
                 break;
             }
         }
-    }   
+    }
+    
+    public Applicant findById(int appId){
+        for(Applicant app:this.applicantList){
+            if(app.getApplicationId()==appId){
+                return app;
+            }
+        }
+        return null;
+    }
+    
+    public ArrayList<Applicant> findByName(String appName){
+        ArrayList<Applicant> appWithNameList= new ArrayList<Applicant>();
+        for(Applicant app:this.applicantList){
+            if(app.getOwnerFirstName().equals(appName)){
+                appWithNameList.add(app);
+            }
+        }
+        return appWithNameList;
+    }
     
 }

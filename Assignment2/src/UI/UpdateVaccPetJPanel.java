@@ -4,7 +4,14 @@
  */
 package UI;
 
+import Model.Applicant;
 import Model.Business;
+import Model.Pet;
+import Model.Vaccine;
+import Model.Validation;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,6 +20,12 @@ import Model.Business;
 public class UpdateVaccPetJPanel extends javax.swing.JPanel {
 
     private Business business;
+    DefaultTableModel petTableModel;
+    DefaultTableModel vaccTableModel;
+    private Pet selectedPet;
+    private Vaccine selectedVacc;
+    private Vaccine emptyVacc;
+    private Validation validation;
     /**
      * Creates new form UpdateVaccPetJPanel
      */
@@ -23,6 +36,47 @@ public class UpdateVaccPetJPanel extends javax.swing.JPanel {
     UpdateVaccPetJPanel(Business business) {
         initComponents();
         this.business=business;
+        this.validation= new Validation();
+        this.petTableModel= (DefaultTableModel) petTable.getModel();
+        this.vaccTableModel= (DefaultTableModel) vaccTable.getModel();
+        displayPet();
+        populateDropdown();
+    }
+    
+    public void displayPet(){
+        petTableModel.setRowCount(0);
+        ArrayList<Applicant> applications=this.business.getApplicantDirectory().getApplicantList();
+        if(applications.size()>0){
+            for (Applicant app:applications){
+                Pet p= app.getPetDetails();
+        
+                Object row[]= new Object[5];
+                row[0]=p;
+                row[1]=p.getPetAge();
+                row[2]=p.getPetGender();
+                row[3]=p.getPetType();
+                row[4]=p.getPetBreed();
+                
+                petTableModel.addRow(row);
+            }
+        }
+        else{
+            System.out.println("Empty List");
+        }
+    }
+    
+    public void populateDropdown(){
+        ArrayList<Applicant> applications=this.business.getApplicantDirectory().getApplicantList();
+        if(applications.size()>0){
+            for (Applicant app:applications){
+                Pet p= app.getPetDetails();
+                petComboBox.addItem(p);
+       
+            }
+        }
+        else{
+            System.out.println("Empty Pet List");
+        }
     }
 
     /**
@@ -34,19 +88,293 @@ public class UpdateVaccPetJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        petTable = new javax.swing.JTable();
+        petDisplay = new javax.swing.JButton();
+        breedField = new javax.swing.JTextField();
+        vaccNameField = new javax.swing.JTextField();
+        ageField = new javax.swing.JTextField();
+        genderField = new javax.swing.JTextField();
+        typeField = new javax.swing.JTextField();
+        updatePetField = new javax.swing.JButton();
+        petComboBox = new javax.swing.JComboBox();
+        showBtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        vaccTable = new javax.swing.JTable();
+        vaccDisplayBtn = new javax.swing.JButton();
+        nameField = new javax.swing.JTextField();
+        courseCheckBox = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        updateVaccBtn = new javax.swing.JButton();
+
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        petTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Age", "Gender", "Type", "Breed"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(petTable);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 430, 200));
+
+        petDisplay.setText("Display Pet");
+        petDisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                petDisplayActionPerformed(evt);
+            }
+        });
+        jPanel1.add(petDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
+        jPanel1.add(breedField, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 130, -1));
+        jPanel1.add(vaccNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 130, -1));
+        jPanel1.add(ageField, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 130, -1));
+        jPanel1.add(genderField, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 130, -1));
+        jPanel1.add(typeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 130, -1));
+
+        updatePetField.setText("Update Pet");
+        updatePetField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePetFieldActionPerformed(evt);
+            }
+        });
+        jPanel1.add(updatePetField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, -1, -1));
+
+        jPanel1.add(petComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 190, -1));
+
+        showBtn.setText("Show");
+        showBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(showBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
+
+        vaccTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Vaccine Name", "Course Completed"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(vaccTable);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 410, 160));
+
+        vaccDisplayBtn.setText("Display Vaccine");
+        vaccDisplayBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vaccDisplayBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(vaccDisplayBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, -1, -1));
+        jPanel1.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, 130, -1));
+
+        courseCheckBox.setText("Check this if course is completed");
+        courseCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courseCheckBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(courseCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, 250, -1));
+
+        jLabel1.setText("Vaccine Name:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, -1));
+
+        jLabel2.setText("Name:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
+
+        jLabel3.setText("Age:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, -1, -1));
+
+        jLabel4.setText("Gender:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
+
+        jLabel5.setText("Type:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, -1, -1));
+
+        jLabel6.setText("Breed:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, -1, -1));
+
+        updateVaccBtn.setText("Update Vaccine");
+        updateVaccBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateVaccBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(updateVaccBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, -1, -1));
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void courseCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_courseCheckBoxActionPerformed
+
+    private void petDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_petDisplayActionPerformed
+        // TODO add your handling code here:
+        int selectedRow= petTable.getSelectedRow();
+        if(selectedRow >= 0){
+            Pet petDetails=(Pet) petTable.getValueAt(selectedRow, 0);
+            this.selectedPet=petDetails;
+            nameField.setText(petDetails.getPetName());
+            ageField.setText(String.valueOf(petDetails.getPetAge()));
+            genderField.setText(petDetails.getPetGender());
+            typeField.setText(petDetails.getPetType());
+            breedField.setText(petDetails.getPetBreed());
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please Select Row");
+        }
+    }//GEN-LAST:event_petDisplayActionPerformed
+
+    private void updatePetFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePetFieldActionPerformed
+        // TODO add your handling code here:
+        
+        String petName= nameField.getText();
+        String petAge = ageField.getText();
+        String petGender= genderField.getText();
+        String petBreed= breedField.getText();
+        String petType= typeField.getText();
+        
+        boolean isPetNameNotNull = this.validation.checkNullEmpty(petName);
+        boolean isPetAgeNotNull = this.validation.checkNullEmpty(petAge);
+        boolean isPetBreedNotNull = this.validation.checkNullEmpty(petBreed);
+        boolean isPetTypeNotNull = this.validation.checkNullEmpty(petType);
+        boolean isPetGenderNotNull = this.validation.checkNullEmpty(petGender);
+        
+        boolean isAllFieldsFilled=  isPetNameNotNull && isPetAgeNotNull && isPetBreedNotNull && isPetTypeNotNull && isPetGenderNotNull;
+
+        if(isAllFieldsFilled){
+            this.selectedPet.setPetName(petName);
+            this.selectedPet.setPetAge(Integer.valueOf(petAge));
+            this.selectedPet.setPetGender(petGender);
+            this.selectedPet.setPetType(petType);
+            this.selectedPet.setPetBreed(petBreed);
+            JOptionPane.showMessageDialog(null,"Pet Updated");
+            displayPet();
+        }
+    }//GEN-LAST:event_updatePetFieldActionPerformed
+
+    private void showBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showBtnActionPerformed
+        // TODO add your handling code here:
+        vaccTableModel.setRowCount(0);
+        Pet petDetailsSelected= (Pet) petComboBox.getSelectedItem();
+        ArrayList<Vaccine> vaccines=petDetailsSelected.getVaccineList();
+        if(vaccines.size()>0){
+            for (Vaccine vacc:vaccines){
+                
+                Object row[]= new Object[2];
+                row[0]=vacc;
+                row[1]=String.valueOf(vacc.isCourseCompleted());
+                vaccTableModel.addRow(row);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"No Vaccine is Present");
+        }
+    }//GEN-LAST:event_showBtnActionPerformed
+
+    private void updateVaccBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateVaccBtnActionPerformed
+        // TODO add your handling code here:
+        String vaccName= vaccNameField.getText();
+        boolean courseComplete= courseCheckBox.isSelected();
+        boolean isVaccNameNotNull = this.validation.checkNullEmpty(vaccName);
+        if(isVaccNameNotNull){
+            if(vaccName != "N/A"){
+                this.selectedVacc.setVaccineName(vaccName);
+                if(courseComplete){
+                    this.selectedVacc.setCourseCompleted(true);
+                }
+                else{
+                    this.selectedVacc.setCourseCompleted(false);
+                }
+                JOptionPane.showMessageDialog(null,"Vacc Updated");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Please enter a valid Vacc Name");
+            }
+        }
+    }//GEN-LAST:event_updateVaccBtnActionPerformed
+
+    private void vaccDisplayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccDisplayBtnActionPerformed
+        // TODO add your handling code here:
+         int selectedRow= vaccTable.getSelectedRow();
+        if(selectedRow >= 0){
+            Vaccine vaccDetails=(Vaccine) vaccTable.getValueAt(selectedRow, 0);
+//            if(vaccDetails.getVaccineName()!="N/A"){
+                this.selectedVacc=vaccDetails;
+                if(vaccDetails.isCourseCompleted()){
+                    courseCheckBox.setSelected(true);
+                }
+                else{
+                    courseCheckBox.setSelected(false);
+                }
+                vaccNameField.setText(vaccDetails.getVaccineName());
+//            }
+//            else{
+//                vaccNameField.setText("N/A");
+//                courseCheckBox.setSelected(false);
+//            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please Select Row");
+        }
+    }//GEN-LAST:event_vaccDisplayBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ageField;
+    private javax.swing.JTextField breedField;
+    private javax.swing.JCheckBox courseCheckBox;
+    private javax.swing.JTextField genderField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JComboBox petComboBox;
+    private javax.swing.JButton petDisplay;
+    private javax.swing.JTable petTable;
+    private javax.swing.JButton showBtn;
+    private javax.swing.JTextField typeField;
+    private javax.swing.JButton updatePetField;
+    private javax.swing.JButton updateVaccBtn;
+    private javax.swing.JButton vaccDisplayBtn;
+    private javax.swing.JTextField vaccNameField;
+    private javax.swing.JTable vaccTable;
     // End of variables declaration//GEN-END:variables
 }

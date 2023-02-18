@@ -37,7 +37,8 @@ public class MainJFrame extends javax.swing.JFrame {
         createApplicationBtn = new javax.swing.JButton();
         addVaccineBtn = new javax.swing.JButton();
         updatePetVaccBtn = new javax.swing.JButton();
-        searchDelAppBtn = new javax.swing.JButton();
+        delAppBtn = new javax.swing.JButton();
+        seachAppBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,7 +70,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 createApplicationBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(createApplicationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 220, -1));
+        jPanel1.add(createApplicationBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 220, -1));
 
         addVaccineBtn.setText("Add Vaccine Details");
         addVaccineBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -87,13 +88,21 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jPanel1.add(updatePetVaccBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 190, -1));
 
-        searchDelAppBtn.setText("Search & Delete Application");
-        searchDelAppBtn.addActionListener(new java.awt.event.ActionListener() {
+        delAppBtn.setText("Delete Application");
+        delAppBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchDelAppBtnActionPerformed(evt);
+                delAppBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(searchDelAppBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 220, -1));
+        jPanel1.add(delAppBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 140, -1));
+
+        seachAppBtn.setText("Search Application");
+        seachAppBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seachAppBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(seachAppBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, -1));
 
         jSplitPane1.setLeftComponent(jPanel1);
 
@@ -121,10 +130,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1.setRightComponent(new CreateApplicationJPanel(this.business));
     }//GEN-LAST:event_createApplicationBtnActionPerformed
 
-    private void searchDelAppBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchDelAppBtnActionPerformed
+    private void delAppBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delAppBtnActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new SearchDelAppJPanel(this.business));
-    }//GEN-LAST:event_searchDelAppBtnActionPerformed
+        jSplitPane1.setRightComponent(new DelAppJPanel(this.business));
+    }//GEN-LAST:event_delAppBtnActionPerformed
 
     private void addVaccineBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVaccineBtnActionPerformed
         // TODO add your handling code here:
@@ -135,6 +144,11 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         jSplitPane1.setRightComponent(new UpdateVaccPetJPanel(this.business));
     }//GEN-LAST:event_updatePetVaccBtnActionPerformed
+
+    private void seachAppBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seachAppBtnActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new SearchAppJPanel(this.business));
+    }//GEN-LAST:event_seachAppBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,10 +189,11 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton addPlanBtn;
     private javax.swing.JButton addVaccineBtn;
     private javax.swing.JButton createApplicationBtn;
+    private javax.swing.JButton delAppBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JButton searchDelAppBtn;
+    private javax.swing.JButton seachAppBtn;
     private javax.swing.JButton updatePetVaccBtn;
     private javax.swing.JButton updatePlanBtn;
     // End of variables declaration//GEN-END:variables

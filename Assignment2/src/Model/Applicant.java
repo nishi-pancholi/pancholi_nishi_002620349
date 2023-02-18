@@ -70,7 +70,7 @@ public class Applicant {
         this.insPlan = insPlan;
     }
      
-    public Pet createPet(String  petName,int petAge,String petType,String petGender,String petBreed){
+    public Pet createPet(String petName,int petAge,String petType,String petGender,String petBreed){
         Pet pet=new Pet();
         pet.setPetName(petName);
         pet.setPetBreed(petBreed);

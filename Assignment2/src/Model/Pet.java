@@ -18,6 +18,10 @@ public class Pet {
     String petGender;
     String petBreed;
     ArrayList<Vaccine> vaccineList;
+    
+    public Pet(){
+        this.vaccineList = new ArrayList<Vaccine>();
+    }
 
     public String getPetName() {
         return petName;
@@ -71,9 +75,13 @@ public class Pet {
         Vaccine vaccine= new Vaccine();
         vaccine.setVaccineName(vaccineName);
         vaccine.setCourseCompleted(courseCompleted);
-        this.vaccineList.add(vaccine);
-         
+        this.vaccineList.add(vaccine);        
         return vaccine;
+    }
+    
+    @Override
+    public String toString(){
+        return this.petName;
     }
     
 }

@@ -28,4 +28,9 @@ public class Vaccine {
         this.courseCompleted = courseCompleted;
     }
     
+    @Override
+    public String toString(){
+        return this.vaccineName;
+    }
+    
 }
