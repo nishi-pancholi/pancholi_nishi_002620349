@@ -24,7 +24,6 @@ public class UpdateVaccPetJPanel extends javax.swing.JPanel {
     DefaultTableModel vaccTableModel;
     private Pet selectedPet;
     private Vaccine selectedVacc;
-    private Vaccine emptyVacc;
     private Validation validation;
     /**
      * Creates new form UpdateVaccPetJPanel
@@ -299,7 +298,12 @@ public class UpdateVaccPetJPanel extends javax.swing.JPanel {
             }
         }
         else{
-            JOptionPane.showMessageDialog(null,"No Vaccine is Present");
+            Vaccine defaultVaccine= petDetailsSelected.setDefaultVaccine();
+            Object row[]= new Object[2];
+            row[0]=defaultVaccine;
+            row[1]=String.valueOf(defaultVaccine.isCourseCompleted());
+            vaccTableModel.addRow(row);
+            JOptionPane.showMessageDialog(null,"No Vaccine is Present but you can update the default vaccine details ");
         }
     }//GEN-LAST:event_showBtnActionPerformed
 
@@ -318,6 +322,7 @@ public class UpdateVaccPetJPanel extends javax.swing.JPanel {
                     this.selectedVacc.setCourseCompleted(false);
                 }
                 JOptionPane.showMessageDialog(null,"Vacc Updated");
+                displayVaccine();
             }
             else{
                 JOptionPane.showMessageDialog(null,"Please enter a valid Vacc Name");
@@ -325,12 +330,23 @@ public class UpdateVaccPetJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_updateVaccBtnActionPerformed
 
+    public void displayVaccine(){
+        vaccTableModel.setRowCount(0);
+        Pet petDetailsSelected= (Pet) petComboBox.getSelectedItem();
+        ArrayList<Vaccine> vaccines=petDetailsSelected.getVaccineList();
+            for (Vaccine vacc:vaccines){
+                
+                Object row[]= new Object[2];
+                row[0]=vacc;
+                row[1]=String.valueOf(vacc.isCourseCompleted());
+                vaccTableModel.addRow(row);
+            }    
+    }
     private void vaccDisplayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaccDisplayBtnActionPerformed
         // TODO add your handling code here:
          int selectedRow= vaccTable.getSelectedRow();
         if(selectedRow >= 0){
             Vaccine vaccDetails=(Vaccine) vaccTable.getValueAt(selectedRow, 0);
-//            if(vaccDetails.getVaccineName()!="N/A"){
                 this.selectedVacc=vaccDetails;
                 if(vaccDetails.isCourseCompleted()){
                     courseCheckBox.setSelected(true);
@@ -339,11 +355,6 @@ public class UpdateVaccPetJPanel extends javax.swing.JPanel {
                     courseCheckBox.setSelected(false);
                 }
                 vaccNameField.setText(vaccDetails.getVaccineName());
-//            }
-//            else{
-//                vaccNameField.setText("N/A");
-//                courseCheckBox.setSelected(false);
-//            }
         }
         else{
             JOptionPane.showMessageDialog(null,"Please Select Row");

@@ -79,6 +79,15 @@ public class Pet {
         return vaccine;
     }
     
+    public Vaccine setDefaultVaccine(){
+            Vaccine vaccine= new Vaccine();
+            vaccine.setVaccineName("N/A");
+            vaccine.setCourseCompleted(false);
+            this.vaccineList.add(vaccine);  
+            
+            return vaccine;
+    }
+    
     @Override
     public String toString(){
         return this.petName;
