@@ -290,11 +290,12 @@ public class UpdateVaccPetJPanel extends javax.swing.JPanel {
         ArrayList<Vaccine> vaccines=petDetailsSelected.getVaccineList();
         if(vaccines.size()>0){
             for (Vaccine vacc:vaccines){
-                
+                if(vacc.getVaccineName()!="N/A"){
                 Object row[]= new Object[2];
                 row[0]=vacc;
                 row[1]=String.valueOf(vacc.isCourseCompleted());
                 vaccTableModel.addRow(row);
+                }
             }
         }
         else{

@@ -41,12 +41,13 @@ public class DelAppJPanel extends javax.swing.JPanel {
             for (Applicant app:applications){
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String date = sdf.format(app.getApplicationDate());
-                Object row[]= new Object[5];
+                Object row[]= new Object[6];
                 row[0]=app;
                 row[1]=date;
                 row[2]=app.getOwnerFirstName();
                 row[3]=app.getOwnerLastName();
                 row[4]=app.getPetDetails().getPetName();
+                row[5]=app.getInsPlan().getPlanName();
                 
                 viewTableModel.addRow(row);
             }
@@ -79,11 +80,11 @@ public class DelAppJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Application Id", "Application Date", "Owner First Name", "Owner LastName", "Pet Name"
+                "Application Id", "Application Date", "Owner First Name", "Owner LastName", "Pet Name", "Associated Plan"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

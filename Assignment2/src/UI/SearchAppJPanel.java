@@ -66,11 +66,11 @@ public class SearchAppJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "App Id", "App Name", "Owner First Name", "Owner Last Name", "Associated Pet"
+                "App Id", "App Name", "Owner First Name", "Owner Last Name", "Pet Name", "Pet Age", "Pet Gender", "Pet Type", "Pet Breed"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -86,11 +86,11 @@ public class SearchAppJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "App Id", "App Name", "Owner First Name", "Owner Last Name", "Associated Pet"
+                "App Id", "App Name", "Owner First Name", "Owner Last Name", "Pet Name", "Pet Age", "Pet Gender", "Pet Type", "Pet Breed"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -136,12 +136,16 @@ public class SearchAppJPanel extends javax.swing.JPanel {
                 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String date = sdf.format(app.getApplicationDate());
-                Object row[]= new Object[5];
+                Object row[]= new Object[9];
                 row[0]=app;
                 row[1]=date;
                 row[2]=app.getOwnerFirstName();
                 row[3]=app.getOwnerLastName();
                 row[4]=app.getPetDetails().getPetName();
+                row[5]=app.getPetDetails().getPetAge();
+                row[6]=app.getPetDetails().getPetGender();
+                row[7]=app.getPetDetails().getPetType();
+                row[8]=app.getPetDetails().getPetBreed();
                 
                 nameTableModel.addRow(row);
             }
@@ -161,12 +165,16 @@ public class SearchAppJPanel extends javax.swing.JPanel {
                 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String date = sdf.format(application.getApplicationDate());
-                Object row[]= new Object[5];
+                Object row[]= new Object[9];
                 row[0]=application;
                 row[1]=date;
                 row[2]=application.getOwnerFirstName();
                 row[3]=application.getOwnerLastName();
                 row[4]=application.getPetDetails().getPetName();
+                row[5]=application.getPetDetails().getPetAge();
+                row[6]=application.getPetDetails().getPetGender();
+                row[7]=application.getPetDetails().getPetType();
+                row[8]=application.getPetDetails().getPetBreed();
                 
                 idTableModel.addRow(row);
         }
