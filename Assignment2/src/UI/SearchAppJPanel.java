@@ -130,7 +130,9 @@ public class SearchAppJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         nameTableModel.setRowCount(0);
         String name= nameField.getText();
+        boolean isNameNotNull = this.validation.checkNullEmpty(name);
         ArrayList<Applicant> applications=this.business.getApplicantDirectory().findByName(name);
+        if(isNameNotNull){
         if(applications.size()>0){
             for (Applicant app:applications){
                 
@@ -153,6 +155,7 @@ public class SearchAppJPanel extends javax.swing.JPanel {
         else{
             JOptionPane.showMessageDialog(null,"No Such Insurance Application Found");
         }
+        }
         
     }//GEN-LAST:event_showNameBtnActionPerformed
 
@@ -160,7 +163,9 @@ public class SearchAppJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         idTableModel.setRowCount(0);
         String id= idField.getText();
+        boolean isIdNotNull = this.validation.checkNullEmpty(id);
         Applicant application=this.business.getApplicantDirectory().findById(Integer.valueOf(id));
+        if(isIdNotNull){
         if(application!=null){
                 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -181,7 +186,7 @@ public class SearchAppJPanel extends javax.swing.JPanel {
         else{
             JOptionPane.showMessageDialog(null,"No Such Insurance Application Found");
         }
-        
+        }
     }//GEN-LAST:event_showIdBtnActionPerformed
 
 
