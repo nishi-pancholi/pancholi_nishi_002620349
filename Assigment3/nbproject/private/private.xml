@@ -12,7 +12,6 @@
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Roles/Role.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/UserDirectory.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Books/BookDirectory.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/LibrarianJPanel.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Customer/CustomerDirectory.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/MainJFrame.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/CustomerJPanel.java</file>
@@ -22,6 +21,7 @@
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Roles/BranchManagerRole.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/BranchManagerWorkArea/BranchManagerJFrame.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Books/Book.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/EmployeeJPanel.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Materials/Material.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/General/MagazineDirectory.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Customer/Customer.java</file>
@@ -30,6 +30,8 @@
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/UserAccount.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/CustomerWorkArea/CustomerJFrame.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Services/RentalRequest.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/BranchJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Persons/Person.java</file>
         </group>
     </open-files>
 </project-private>

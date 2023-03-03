@@ -11,6 +11,8 @@ import LibrarianArea.Library;
  * @author nishipancholi
  */
 public class Branch {
+    private static int count = 0;
+    String branchID;
     String branchName;
     private Library library;
     private UserDirectory userAccountDirectory;
@@ -18,6 +20,25 @@ public class Branch {
     public Branch() {
         this.userAccountDirectory=new UserDirectory();
         this.library= new Library();
+        this.count++;
+        
+        this.branchID = "BranchNo"+this.count;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Branch.count = count;
+    }
+
+    public String getBranchID() {
+        return branchID;
+    }
+
+    public void setBranchID(String branchID) {
+        this.branchID = branchID;
     }
 
     public String getBranchName() {
@@ -52,5 +73,10 @@ public class Branch {
         
         this.library=lib;
         return lib;
+    }
+    
+    @Override
+    public String toString() {
+       return this.branchName;
     }
 }

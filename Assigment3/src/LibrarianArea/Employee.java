@@ -13,20 +13,11 @@ import java.util.ArrayList;
  * @author nishipancholi
  */
 public class Employee extends Person{
-    String employeeId;
     float experience;
     String designation;
     
     public Employee(){
             super();
-    }
-
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
     }
 
     public float getExperience() {

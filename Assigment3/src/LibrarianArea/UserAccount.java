@@ -90,9 +90,14 @@ public class UserAccount {
         if (role.equals("librarian")) {
              return new LibrarianRole().getWorkArea(system, useraccount);
         }
-        if (role.equals("branch manageer")) {
+        if (role.equals("branch manager")) {
              return new BranchManagerRole().getWorkArea(system, useraccount);
         }
         return null;
+    }
+    
+    @Override
+    public String toString() {
+       return this.accountId;
     }
 }

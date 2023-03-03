@@ -80,7 +80,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
 
-        jLabel2.setText("Welcome");
+        jLabel2.setText("Welcome customer");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, -1, -1));
 
         jSplitPane1.setRightComponent(jPanel2);

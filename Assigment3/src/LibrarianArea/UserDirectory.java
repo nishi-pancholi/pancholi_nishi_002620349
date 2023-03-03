@@ -14,6 +14,14 @@ import Roles.Role;
  */
 public class UserDirectory {
     ArrayList<UserAccount> useraccountlist;
+
+    public ArrayList<UserAccount> getUseraccountlist() {
+        return useraccountlist;
+    }
+
+    public void setUseraccountlist(ArrayList<UserAccount> useraccountlist) {
+        this.useraccountlist = useraccountlist;
+    }
     
     public UserDirectory() {
         this.useraccountlist = new ArrayList<UserAccount>();

@@ -13,17 +13,48 @@ import Genres.GenreDirectory;
  * @author nishipancholi
  */
 public class Library {
+    private static int count = 0;
+    String libraryID;
     String libraryName;
     String location;
     int buildingNo;
     private AuthorDirectory authorDirectory;
     private BookDirectory bookdirectory;
     private GenreDirectory genreDirectory;
+    private EmployeeDirectory employeeDirectory;
     
     public Library() {
         this.authorDirectory=new AuthorDirectory();
         this.bookdirectory=new BookDirectory();
         this.genreDirectory= new GenreDirectory();
+        this.employeeDirectory=new EmployeeDirectory();
+        this.count++;
+        
+        this.libraryID = "LibraryNo"+this.count;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Library.count = count;
+    }
+
+    public String getLibraryID() {
+        return libraryID;
+    }
+
+    public void setLibraryID(String libraryID) {
+        this.libraryID = libraryID;
+    }
+
+    public EmployeeDirectory getEmployeeDirectory() {
+        return employeeDirectory;
+    }
+
+    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
+        this.employeeDirectory = employeeDirectory;
     }
 
     public AuthorDirectory getAuthorDirectory() {
@@ -74,5 +105,9 @@ public class Library {
         this.buildingNo = buildingNo;
     }
     
+    @Override
+    public String toString() {
+       return this.libraryID;
+    }
     
 }

@@ -75,4 +75,14 @@ public class ApplicationSystem {
             }
         }
     }
+    
+    public Boolean branchExists(String branchName) {
+        for(Branch b: this.branchList) {
+            if(b.getBranchName().equals(branchName)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
 }

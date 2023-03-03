@@ -145,7 +145,7 @@ public class CustomerJPanel extends javax.swing.JPanel {
         else {
             // save the customer obj for user and useraccount credentials
             UserAccount user = this.system.getUserAccountDirectory().createUserAccount(fieldusername1.getText(), fieldPassword1.getText(), "customer");
-            this.system.getCustomerDirectory().createCustomer(user.getAccountId(), fieldAge.getText(), fieldAge.getText());
+            this.system.getCustomerDirectory().createCustomer(user.getAccountId(), fieldname.getText(), fieldAge.getText());
             populate();
         }
 

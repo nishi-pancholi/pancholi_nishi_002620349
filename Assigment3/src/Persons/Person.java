@@ -9,12 +9,23 @@ package Persons;
  * @author nishipancholi
  */
 public class Person {
+    private static int count = 0;
     String personID;
     String name;
     String age;
     
     public Person() {
+        this.count++;
         
+        this.personID = "EmpNo"+this.count;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Person.count = count;
     }
     
     
