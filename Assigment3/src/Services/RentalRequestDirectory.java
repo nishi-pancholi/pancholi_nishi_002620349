@@ -1,0 +1,50 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Services;
+
+import Customer.Customer;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author nishipancholi
+ */
+public class RentalRequestDirectory {
+    ArrayList<RentalRequest> requestlist;
+    
+    public RentalRequestDirectory() {
+        this.requestlist = new ArrayList<RentalRequest>();
+    }
+
+    public ArrayList<RentalRequest> getRequestlist() {
+        return requestlist;
+    }
+
+    public void setRequestlist(ArrayList<RentalRequest> requestlist) {
+        this.requestlist = requestlist;
+    }
+
+    // create a new order
+    public RentalRequest createRequest(Customer customer,float price,String status,int duration, String materialType) {
+        RentalRequest req = new RentalRequest(customer);
+       
+        req.setStatus(status);
+        req.setMaterialType(materialType);
+        req.setDuration(duration);
+        req.setPrice(price);
+        
+        this.requestlist.add(req);
+        return req;
+    }
+    
+    public RentalRequest requestForBook(Customer customer) {
+        RentalRequest request = new RentalRequest();
+        request.setCustomer(customer);
+        
+        this.requestlist.add(request);
+        return request;
+    }
+
+}
