@@ -5,8 +5,12 @@
 package UI.LibrarianWorkArea;
 
 import AppSystem.ApplicationSystem;
+import LibrarianArea.Branch;
+import LibrarianArea.Employee;
+import LibrarianArea.Library;
 import LibrarianArea.UserAccount;
 import UI.MainJFrame;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +19,7 @@ import UI.MainJFrame;
 public class LibrarianJFrame extends javax.swing.JFrame {
     private ApplicationSystem system;
     private UserAccount useraccount;
+    private Library lib;
 
     /**
      * Creates new form LibrarianJFrame
@@ -23,11 +28,14 @@ public class LibrarianJFrame extends javax.swing.JFrame {
         initComponents();
     }
 
-    public LibrarianJFrame(ApplicationSystem system, UserAccount useraccount) {
+    public LibrarianJFrame(ApplicationSystem system, UserAccount useraccount, Library lib) {
         initComponents();
         this.setVisible(true);
         this.system=system;
         this.useraccount=useraccount;
+        this.lib=lib;
+        System.out.println(this.useraccount.getUsername());
+        System.out.println(this.lib);
     }
 
     /**
@@ -118,22 +126,22 @@ public class LibrarianJFrame extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new RequestsJPanel(system, useraccount));
+        jSplitPane1.setRightComponent(new RequestsJPanel(system, useraccount,this.lib));
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new AuthorGenreJPanel(system, useraccount));
+        jSplitPane1.setRightComponent(new AuthorGenreJPanel(system, useraccount,this.lib));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new BookJPanel(system, useraccount));
+        jSplitPane1.setRightComponent(new BookJPanel(system, useraccount,this.lib));
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new MagazineJPanel(system, useraccount));
+        jSplitPane1.setRightComponent(new MagazineJPanel(system, useraccount,this.lib));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

@@ -8,6 +8,8 @@ import AppSystem.ApplicationSystem;
 import LibrarianArea.UserAccount;
 import LibrarianArea.UserDirectory;
 import Customer.Customer;
+import LibrarianArea.Branch;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,6 +37,7 @@ public class CustomerJPanel extends javax.swing.JPanel {
         this.tableModel = (DefaultTableModel) jTable1.getModel();
         
         populate();
+        populateDropdown();
     }
     public void populate() {
         
@@ -52,6 +55,15 @@ public class CustomerJPanel extends javax.swing.JPanel {
             tableModel.addRow(row);
         }
         
+    }
+    
+    public void populateDropdown(){
+        
+        ArrayList<Branch> branchDetail= this.system.getBranchList();
+        
+        for(Branch b:branchDetail){
+            jComboBox1.addItem(b);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,6 +85,7 @@ public class CustomerJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         fieldname = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -132,20 +145,22 @@ public class CustomerJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Age");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 180, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
 
         UserDirectory ua = this.system.getUserAccountDirectory();
-
         if(ua.accountExists(fieldusername1.getText(), fieldPassword1.getText(), "customer")) {
             JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
         }
         else {
             // save the customer obj for user and useraccount credentials
+            Branch branchDetails =(Branch) jComboBox1.getSelectedItem();
             UserAccount user = this.system.getUserAccountDirectory().createUserAccount(fieldusername1.getText(), fieldPassword1.getText(), "customer");
-            this.system.getCustomerDirectory().createCustomer(user.getAccountId(), fieldname.getText(), fieldAge.getText());
+            this.system.getCustomerDirectory().createCustomer(user.getAccountId(), fieldname.getText(), fieldAge.getText(),branchDetails);
             populate();
         }
 
@@ -166,6 +181,7 @@ public class CustomerJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField fieldPassword1;
     private javax.swing.JTextField fieldname;
     private javax.swing.JTextField fieldusername1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

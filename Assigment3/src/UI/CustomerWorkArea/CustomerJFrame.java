@@ -5,9 +5,8 @@
 package UI.CustomerWorkArea;
 
 import AppSystem.ApplicationSystem;
+import LibrarianArea.Library;
 import LibrarianArea.UserAccount;
-import Customer.Customer;
-import Services.RentalRequest;
 import UI.MainJFrame;
 
 /**
@@ -18,6 +17,7 @@ public class CustomerJFrame extends javax.swing.JFrame {
     
     private ApplicationSystem system;
     private UserAccount useraccount;
+    private Library lib;
 
     /**
      * Creates new form CustomerJFrame
@@ -26,11 +26,12 @@ public class CustomerJFrame extends javax.swing.JFrame {
         initComponents();
     }
 
-    public CustomerJFrame(ApplicationSystem system, UserAccount useraccount) {
+    public CustomerJFrame(ApplicationSystem system, UserAccount useraccount, Library lib) {
         initComponents();
         this.setVisible(true);
         this.system=system;
         this.useraccount=useraccount;
+        this.lib=lib;
     }
 
     /**
@@ -45,8 +46,10 @@ public class CustomerJFrame extends javax.swing.JFrame {
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        orderBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -62,20 +65,36 @@ public class CustomerJFrame extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jButton2.setText("VIEW COLLECTION");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 150, 30));
+
+        jButton3.setText("VIEW REQUESTS");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 140, 30));
+
+        jButton4.setText("MAKE REQUESTS");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 140, 30));
 
         jSplitPane1.setTopComponent(jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        orderBtn.setText("PLACE REQUEST");
-        orderBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderBtnActionPerformed(evt);
-            }
-        });
-        jPanel2.add(orderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
@@ -97,16 +116,20 @@ public class CustomerJFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void orderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBtnActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new CollectionJPanel(system, useraccount,lib));
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-//        Customer c = this.system.getCustomerDirectory().findById(useraccount.getAccountId());
-//
-//        // create order
-//        RentalRequest request = this.system.getRentalRequestDirectory().requestForBook(c);
-//        // add it to personal customer order list if required
-//        c.addRequestForCustomer(request);
-    }//GEN-LAST:event_orderBtnActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new MakeRequestsJPanel(system, useraccount,lib));
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        jSplitPane1.setRightComponent(new ViewRequestsJPanel(system, useraccount,lib));
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,11 +168,13 @@ public class CustomerJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JButton orderBtn;
     // End of variables declaration//GEN-END:variables
 }

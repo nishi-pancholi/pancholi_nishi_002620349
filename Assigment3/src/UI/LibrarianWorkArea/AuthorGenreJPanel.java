@@ -8,6 +8,8 @@ import AppSystem.ApplicationSystem;
 import Author.Author;
 import Genres.Genre;
 import LibrarianArea.Branch;
+import LibrarianArea.Employee;
+import LibrarianArea.Library;
 import LibrarianArea.UserAccount;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -20,8 +22,10 @@ import javax.swing.table.DefaultTableModel;
 public class AuthorGenreJPanel extends javax.swing.JPanel {
        private UserAccount useraccount;
        private ApplicationSystem system;
+       private Library lib;
        DefaultTableModel tableAuthorModel;
        DefaultTableModel tableGenreModel;
+       
        
 
     /**
@@ -31,46 +35,41 @@ public class AuthorGenreJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    AuthorGenreJPanel(ApplicationSystem system, UserAccount useraccount) {
+    AuthorGenreJPanel(ApplicationSystem system, UserAccount useraccount, Library lib) {
        initComponents();
         this.system = system;
         this.useraccount = useraccount;
+        this.lib=lib;
         this.tableAuthorModel = (DefaultTableModel) authorTable.getModel();
         this.tableGenreModel = (DefaultTableModel) genreTable.getModel();
         
         populateAuthor();
         populateGenre();
     }
+    
 
     public void populateAuthor() {
         tableAuthorModel.setRowCount(0);
-        ArrayList<Branch> branchList = this.system.getBranchList();
-        for(Branch branch: branchList){
-            ArrayList<Author> authors=branch.getLibrary().getAuthorDirectory().getAuthorlist();
+            ArrayList<Author> authors=this.lib.getAuthorDirectory().getAuthorlist();
             for(Author auth: authors){
                 Object[] row = new Object[1];
             
                 row[0] = auth.getAuthorName();
                 tableAuthorModel.addRow(row);
             }
-        }
-        
+   
     }
     
     public void populateGenre() {
-        
+//        getDesignedLibrary();
         tableGenreModel.setRowCount(0);
-        ArrayList<Branch> branchList = this.system.getBranchList();
-        for(Branch branch: branchList){
-            ArrayList<Genre> genreList=branch.getLibrary().getGenreDirectory().getGenrelist();
+            ArrayList<Genre> genreList=this.lib.getGenreDirectory().getGenrelist();
             for(Genre gen: genreList){
                 Object[] row = new Object[1];
             
                 row[0] = gen.getGenreName();
                 tableGenreModel.addRow(row);
-            }
-        }
-        
+            }  
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -170,48 +169,44 @@ public class AuthorGenreJPanel extends javax.swing.JPanel {
 
     private void addAuthorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAuthorBtnActionPerformed
         // TODO add your handling code here:
-        
-        ArrayList<Branch> branchList = this.system.getBranchList();
-        for(Branch branch: branchList){
-            ArrayList<Author> authors=branch.getLibrary().getAuthorDirectory().getAuthorlist();
+//            getDesignedLibrary();
+
+            ArrayList<Author> authors=this.lib.getAuthorDirectory().getAuthorlist();
             if(authors.isEmpty()){
-                    branch.getLibrary().getAuthorDirectory().createAuthor(fieldAuthorName.getText());
+                    this.lib.getAuthorDirectory().createAuthor(fieldAuthorName.getText());
                     JOptionPane.showMessageDialog(null, "Author Created.");
                     populateAuthor();   
             }else{
                for(Author auth: authors){
                 if(auth.getAuthorName()!=fieldAuthorName.getText()){
-                    branch.getLibrary().getAuthorDirectory().createAuthor(fieldAuthorName.getText());
+                    this.lib.getAuthorDirectory().createAuthor(fieldAuthorName.getText());
                     JOptionPane.showMessageDialog(null, "Author Created.");
                     populateAuthor();
                 }
             } 
             }
             
-        }
         
     }//GEN-LAST:event_addAuthorBtnActionPerformed
 
     private void addGenreBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGenreBtnActionPerformed
         // TODO add your handling code here:
-        
-         ArrayList<Branch> branchList = this.system.getBranchList();
-        for(Branch branch: branchList){
-            ArrayList<Genre> genreList=branch.getLibrary().getGenreDirectory().getGenrelist();
+//            getDesignedLibrary();
+            ArrayList<Genre> genreList=this.lib.getGenreDirectory().getGenrelist();
             if(genreList.isEmpty()){
-                    branch.getLibrary().getGenreDirectory().createGenre(fieldGenreName.getText());
+                    this.lib.getGenreDirectory().createGenre(fieldGenreName.getText());
                     JOptionPane.showMessageDialog(null, "Genre Created.");
                     populateGenre();   
             }else{
                 for(Genre genre: genreList){
                     if(fieldGenreName.getText()!=genre.getGenreName()){
-                        branch.getLibrary().getGenreDirectory().createGenre(fieldGenreName.getText());
+                        this.lib.getGenreDirectory().createGenre(fieldGenreName.getText());
                         JOptionPane.showMessageDialog(null, "Genre Created.");
                         populateGenre();
                     }
                 }
             }
-        }
+
     }//GEN-LAST:event_addGenreBtnActionPerformed
 
 

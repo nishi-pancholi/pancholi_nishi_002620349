@@ -9,6 +9,8 @@ import Author.Author;
 import Books.Book;
 import Genres.Genre;
 import LibrarianArea.Branch;
+import LibrarianArea.Employee;
+import LibrarianArea.Library;
 import LibrarianArea.UserAccount;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 public class BookJPanel extends javax.swing.JPanel {
         private UserAccount useraccount;
         private ApplicationSystem system;
+        private Library lib;
         DefaultTableModel tableModel;
 
     /**
@@ -32,11 +35,12 @@ public class BookJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    BookJPanel(ApplicationSystem system, UserAccount useraccount) {
+    BookJPanel(ApplicationSystem system, UserAccount useraccount,Library lib) {
         initComponents();
         this.system = system;
         this.useraccount = useraccount;
         this.tableModel = (DefaultTableModel) bookTable.getModel();
+        this.lib=lib;
         populateAuthorDropdown();
         populateGenreDropdown();
         populate();
@@ -44,16 +48,15 @@ public class BookJPanel extends javax.swing.JPanel {
     
     public void populate() {
         tableModel.setRowCount(0);
-        ArrayList<Branch> branchList = this.system.getBranchList();
-        for(Branch branch: branchList){
-            ArrayList<Book> books=branch.getLibrary().getBookdirectory().getBooklist();
+            
+            ArrayList<Book> books=this.lib.getBookdirectory().getBooklist();
             for(Book b: books){
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String date = sdf.format(b.getRegistrationDate());
                 Object[] row = new Object[9];
             
                 row[0] = b.getSerialNumber();
-                row[1] = b;
+                row[1] = b.getName();
                 row[2] = date;
                 row[3] = b.getPagesNo();
                 row[4] = b.getBindingType();
@@ -64,34 +67,24 @@ public class BookJPanel extends javax.swing.JPanel {
                 
                 tableModel.addRow(row);
             }
-        }
         
     }
 
     public void populateAuthorDropdown(){
-        
-        ArrayList<Branch> branchDetail= this.system.getBranchList();
-        
-        for(Branch b:branchDetail){
-            ArrayList<Author> authList= b.getLibrary().getAuthorDirectory().getAuthorlist();
+            ArrayList<Author> authList= this.lib.getAuthorDirectory().getAuthorlist();
             for(Author auth:authList){
                authorComboBox.addItem(auth); 
             }
             
-        }
     }
     
     public void populateGenreDropdown(){
-        
-        ArrayList<Branch> branchDetail= this.system.getBranchList();
-        
-        for(Branch b:branchDetail){
-            ArrayList<Genre> genreList= b.getLibrary().getGenreDirectory().getGenrelist();
+            ArrayList<Genre> genreList=this.lib.getGenreDirectory().getGenrelist();
             for(Genre gen:genreList){
                genreComboBox.addItem(gen); 
             }
             
-        }
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -235,13 +228,9 @@ public class BookJPanel extends javax.swing.JPanel {
         Date registrationDate= jDateChooser1.getDate();
         Author authorDetails =(Author) authorComboBox.getSelectedItem();
         Genre genreDetails =(Genre) genreComboBox.getSelectedItem();
-        
-        ArrayList<Branch> branchList = this.system.getBranchList();
-        for(Branch branch: branchList){
-            branch.getLibrary().getBookdirectory().createBook(bookName, registrationDate, true, Integer.valueOf(pageNo), bindingType,language, authorDetails, genreDetails);
+            this.lib.getBookdirectory().createBook(bookName, registrationDate, true, Integer.valueOf(pageNo), bindingType,language, authorDetails, genreDetails);
             JOptionPane.showMessageDialog(null, "Book Created.");
             populate();    
-        }
     }//GEN-LAST:event_addBookBtnActionPerformed
 
 

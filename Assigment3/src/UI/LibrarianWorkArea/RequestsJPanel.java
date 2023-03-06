@@ -5,7 +5,13 @@
 package UI.LibrarianWorkArea;
 
 import AppSystem.ApplicationSystem;
+import Customer.Customer;
+import LibrarianArea.Library;
 import LibrarianArea.UserAccount;
+import Services.RentalRequest;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,7 +20,9 @@ import LibrarianArea.UserAccount;
 public class RequestsJPanel extends javax.swing.JPanel {
         private UserAccount useraccount;
         private ApplicationSystem system;
-//       DefaultTableModel tableModel;
+        private Library lib;
+        private RentalRequest selectedReq;
+        DefaultTableModel requestTableModel;
 
     /**
      * Creates new form GenreJPanel
@@ -23,15 +31,39 @@ public class RequestsJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    RequestsJPanel(ApplicationSystem system, UserAccount useraccount) {
+    RequestsJPanel(ApplicationSystem system, UserAccount useraccount,Library lib) {
         initComponents();
         this.system = system;
         this.useraccount = useraccount;
-//        this.tableModel = (DefaultTableModel) userTable.getModel();
-//        
-//        populate();
+        this.lib=lib;
+        this.requestTableModel = (DefaultTableModel) requestTable.getModel();
+       
+        populate();
     }
 
+    public void populate() {
+        requestTableModel.setRowCount(0);
+            
+            ArrayList<Customer> custList=this.system.getCustomerDirectory().getCustomerlist();
+            for(Customer c: custList){
+                if(c.getBranch().getLibrary()==this.lib){
+                    ArrayList<RentalRequest> reqList= c.getRentalRequestDirectory().getRequestlist();
+                    for(RentalRequest req: reqList){
+                        Object[] row = new Object[6];
+
+                        row[0] = req;
+                        row[1] = req.getStatus();
+                        row[2] = req.getDuration();
+                        row[3] = req.getMaterialType();
+                        row[4] = req.getMaterial().getName();
+                        row[5]= req.getCustomer().getName();
+
+                        requestTableModel.addRow(row);
+                    }
+                }
+            }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,19 +73,158 @@ public class RequestsJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jScrollPane1 = new javax.swing.JScrollPane();
+        requestTable = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        fieldPrice = new javax.swing.JTextField();
+        fieldReqId = new javax.swing.JTextField();
+        fieldReqStatus = new javax.swing.JTextField();
+        fieldReqDuration = new javax.swing.JTextField();
+        fieldMatType = new javax.swing.JTextField();
+        fieldMatName = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 204));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        requestTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Request Id", "Status", "Duration", "Material Type", "Material Name", "Customer Name"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(requestTable);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 720, 240));
+
+        jButton1.setText("Show");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
+
+        jLabel1.setText("Price:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 490, -1, -1));
+
+        jLabel2.setText("Request Id:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, -1));
+
+        jLabel3.setText("Request Status:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
+
+        jLabel4.setText("Request Duration:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, -1, -1));
+
+        jLabel5.setText("Material Type:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, -1, -1));
+
+        jLabel6.setText("Material Duration:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
+        add(fieldPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 280, -1));
+
+        fieldReqId.setEnabled(false);
+        add(fieldReqId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 280, -1));
+
+        fieldReqStatus.setEnabled(false);
+        add(fieldReqStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 280, -1));
+
+        fieldReqDuration.setEnabled(false);
+        add(fieldReqDuration, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 400, 280, -1));
+
+        fieldMatType.setEnabled(false);
+        add(fieldMatType, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 280, -1));
+
+        fieldMatName.setEnabled(false);
+        add(fieldMatName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, 280, -1));
+
+        jButton2.setText("Reject");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 530, -1, -1));
+
+        jButton3.setText("Accept");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedRow= requestTable.getSelectedRow();
+        if(selectedRow >= 0){
+            RentalRequest reqDetails=(RentalRequest) requestTable.getValueAt(selectedRow, 0);
+            this.selectedReq=reqDetails;
+            fieldReqId.setText(reqDetails.getRequestId());
+            fieldReqStatus.setText(reqDetails.getStatus());
+            fieldReqDuration.setText(reqDetails.getDuration());
+            fieldMatType.setText(reqDetails.getMaterialType());
+            fieldMatName.setText(reqDetails.getMaterial().getName());
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Please Select Row");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        float price= Float.valueOf(fieldPrice.getText());
+        this.selectedReq.setStatus("Rented");
+        this.selectedReq.setPrice(price);
+        JOptionPane.showMessageDialog(null,"Request Accepted");
+        populate();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.selectedReq.setStatus("Rejected");
+        this.selectedReq.getMaterial().setIsAvailable(true);
+        populate();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fieldMatName;
+    private javax.swing.JTextField fieldMatType;
+    private javax.swing.JTextField fieldPrice;
+    private javax.swing.JTextField fieldReqDuration;
+    private javax.swing.JTextField fieldReqId;
+    private javax.swing.JTextField fieldReqStatus;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable requestTable;
     // End of variables declaration//GEN-END:variables
 }

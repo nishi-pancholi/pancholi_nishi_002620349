@@ -11,6 +11,7 @@ import java.util.Date;
  * @author nishipancholi
  */
 public class Material {
+    String materialId;
     int serialNumber;
     String name;
     Date registrationDate;
@@ -20,6 +21,23 @@ public class Material {
     public Material(){
         this.count++;   
         this.serialNumber =this.count;
+        this.materialId="MaterialNo"+this.count;
+    }
+
+    public String getMaterialId() {
+        return materialId;
+    }
+
+    public void setMaterialId(String materialId) {
+        this.materialId = materialId;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Material.count = count;
     }
 
     public int getSerialNumber() {
@@ -54,4 +72,8 @@ public class Material {
         this.isAvailable = isAvailable;
     }
    
+    @Override
+    public String toString() {
+       return this.materialId;
+    }
 }

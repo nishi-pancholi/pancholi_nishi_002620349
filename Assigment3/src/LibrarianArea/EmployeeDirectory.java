@@ -36,8 +36,9 @@ public class EmployeeDirectory {
         return null;
     }
     
-    public Employee createEmployee(String name, String age, float experience,String designation) {
+    public Employee createEmployee(String username,String name, String age, float experience,String designation) {
         Employee emp = new Employee();
+        emp.setUserName(username);
         emp.setName(name);
         emp.setAge(age);
         emp.setDesignation(designation);

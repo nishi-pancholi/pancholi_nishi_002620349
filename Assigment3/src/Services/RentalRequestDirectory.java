@@ -5,6 +5,7 @@
 package Services;
 
 import Customer.Customer;
+import Materials.Material;
 import java.util.ArrayList;
 
 /**
@@ -27,13 +28,12 @@ public class RentalRequestDirectory {
     }
 
     // create a new order
-    public RentalRequest createRequest(Customer customer,float price,String status,int duration, String materialType) {
+    public RentalRequest createRequest(Customer customer,Material m,String status,String duration, String materialType) {
         RentalRequest req = new RentalRequest(customer);
-       
+        req.setMaterial(m);
         req.setStatus(status);
         req.setMaterialType(materialType);
         req.setDuration(duration);
-        req.setPrice(price);
         
         this.requestlist.add(req);
         return req;

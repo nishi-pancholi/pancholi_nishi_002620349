@@ -5,22 +5,25 @@
 package Services;
 
 import Customer.Customer;
+import Materials.Material;
 
 /**
  *
  * @author nishipancholi
  */
 public class RentalRequest {
-    Customer customer;
+    private Customer customer;
     private static int count = 0;
     String requestId;
     float price;
     String status;
-    int duration;
+    String duration;
     String materialType;
+    private Material material;
     
     public RentalRequest() {
         this.customer = new Customer();
+        this.material= new Material();
         this.status = "Created";
         this.count++;
         
@@ -30,9 +33,18 @@ public class RentalRequest {
     public RentalRequest(Customer customer) {
         this.customer = customer;
         this.status = "Created";
+        this.material= new Material();
         this.count++;
         
         this.requestId = "RequestNo"+this.count;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
     }
 
     public Customer getCustomer() {
@@ -76,11 +88,11 @@ public class RentalRequest {
         this.price = price;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 

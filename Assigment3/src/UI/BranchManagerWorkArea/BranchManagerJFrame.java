@@ -5,6 +5,7 @@
 package UI.BranchManagerWorkArea;
 
 import AppSystem.ApplicationSystem;
+import LibrarianArea.Library;
 import LibrarianArea.UserAccount;
 import UI.MainJFrame;
 
@@ -15,6 +16,7 @@ import UI.MainJFrame;
 public class BranchManagerJFrame extends javax.swing.JFrame {
     private ApplicationSystem system;
     private UserAccount useraccount;
+    private Library lib;
 
     /**
      * Creates new form BranchManagerJFrame
@@ -23,11 +25,12 @@ public class BranchManagerJFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    public BranchManagerJFrame(ApplicationSystem system, UserAccount useraccount) {
+    public BranchManagerJFrame(ApplicationSystem system, UserAccount useraccount, Library lib) {
         initComponents();
         this.setVisible(true);
         this.system=system;
         this.useraccount=useraccount;
+        this.lib=lib;
     }
 
     /**

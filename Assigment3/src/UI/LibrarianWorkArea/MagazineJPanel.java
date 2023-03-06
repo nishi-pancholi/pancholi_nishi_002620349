@@ -7,6 +7,8 @@ package UI.LibrarianWorkArea;
 import AppSystem.ApplicationSystem;
 import General.Magazine;
 import LibrarianArea.Branch;
+import LibrarianArea.Employee;
+import LibrarianArea.Library;
 import LibrarianArea.UserAccount;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class MagazineJPanel extends javax.swing.JPanel {
        private UserAccount useraccount;
        private ApplicationSystem system;
+       private Library lib;
        DefaultTableModel tableModel;
     /**
      * Creates new form MagazineJPanel
@@ -29,20 +32,18 @@ public class MagazineJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    MagazineJPanel(ApplicationSystem system, UserAccount useraccount) {
+    MagazineJPanel(ApplicationSystem system, UserAccount useraccount, Library lib) {
         initComponents();
         this.system = system;
         this.useraccount = useraccount;
+        this.lib= lib;
         this.tableModel = (DefaultTableModel) magTable.getModel();
-        
         populate();
     }
     
     public void populate() {
         tableModel.setRowCount(0);
-        ArrayList<Branch> branchList = this.system.getBranchList();
-        for(Branch branch: branchList){
-            ArrayList<Magazine> magazineList=branch.getLibrary().getMagazineDirectory().getMagazinelist();
+            ArrayList<Magazine> magazineList=this.lib.getMagazineDirectory().getMagazinelist();
             for(Magazine mag: magazineList){
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String date = sdf.format(mag.getRegistrationDate());
@@ -57,8 +58,7 @@ public class MagazineJPanel extends javax.swing.JPanel {
                 
                 tableModel.addRow(row);
             }
-        }
-        
+               
     }
 
     /**
@@ -138,18 +138,14 @@ public class MagazineJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
         String magName= fieldMagName.getText();
         String magCompanyName= fieldMagCompanyName.getText();
         Date registrationDate= jDateChooser1.getDate();
         String issueTypeDetails =(String) issueTypeComboBox.getSelectedItem();
         
-        ArrayList<Branch> branchList = this.system.getBranchList();
-        for(Branch branch: branchList){
-            branch.getLibrary().getMagazineDirectory().createMagazine(magName, registrationDate, true, magCompanyName, issueTypeDetails);
+            this.lib.getMagazineDirectory().createMagazine(magName, registrationDate, true, magCompanyName, issueTypeDetails);
             JOptionPane.showMessageDialog(null, "Magazine Created.");
             populate();    
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

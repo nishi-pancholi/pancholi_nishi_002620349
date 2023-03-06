@@ -4,10 +4,11 @@
  */
 package Customer;
 
+import LibrarianArea.Branch;
+import Materials.Material;
 import Persons.Person;
 import Services.RentalRequest;
 import Services.RentalRequestDirectory;
-import java.util.ArrayList;
 
 /**
  *
@@ -16,12 +17,20 @@ import java.util.ArrayList;
 public class Customer extends Person{
     private int requestsTotal;
     private RentalRequestDirectory rentalRequestDirectory;
+    private Branch branch;
     
     public Customer() {
         super();
         this.rentalRequestDirectory = new RentalRequestDirectory();
     }
-   
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
     
     public int getRequestTotal() {
         return requestsTotal;
@@ -47,7 +56,7 @@ public class Customer extends Person{
         this.rentalRequestDirectory = rentalRequestDirectory;
     }
 
-    public void addRequestForCustomer(RentalRequest request,float price,String status,int duration, String materialType) {
-        this.rentalRequestDirectory.createRequest(this,price,status,duration,materialType);
+    public void addRequestForCustomer(RentalRequest request) {
+        this.rentalRequestDirectory.createRequest(this,request.getMaterial(),request.getStatus(),request.getDuration(),request.getMaterialType());
     }
 }

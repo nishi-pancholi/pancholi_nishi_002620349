@@ -212,7 +212,7 @@ public class EmployeeJPanel extends javax.swing.JPanel {
         }
         else {
             UserAccount user = this.system.getUserAccountDirectory().createUserAccount(fieldManagerUsername.getText(), fieldManagerPassword.getText(), "branch manager");
-            branchDetails.getLibrary().getEmployeeDirectory().createEmployee(managerName, managerAge, Float.valueOf(managerExp), "branch manager");
+            branchDetails.getLibrary().getEmployeeDirectory().createEmployee(fieldManagerUsername.getText(),managerName, managerAge, Float.valueOf(managerExp), "branch manager");
             JOptionPane.showMessageDialog(null,"Manager Added");
             populate();
         }
@@ -234,7 +234,7 @@ public class EmployeeJPanel extends javax.swing.JPanel {
         }
         else {
             UserAccount user = this.system.getUserAccountDirectory().createUserAccount(fieldLibUsername.getText(), fieldLibPassword.getText(), "librarian");
-            branchDetails.getLibrary().getEmployeeDirectory().createEmployee(libName, libAge, Float.valueOf(libExp), "librarian");
+            branchDetails.getLibrary().getEmployeeDirectory().createEmployee(fieldLibUsername.getText(),libName, libAge, Float.valueOf(libExp), "librarian");
             JOptionPane.showMessageDialog(null,"Librarian Added");
             populate();
         }
