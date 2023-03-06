@@ -26,6 +26,7 @@ public class RentalRequest {
         this.material= new Material();
         this.status = "Created";
         this.count++;
+        this.price= 0;
         
         this.requestId = "RequestNo"+this.count;
     }
