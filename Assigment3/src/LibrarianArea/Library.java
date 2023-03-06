@@ -6,6 +6,7 @@ package LibrarianArea;
 
 import Author.AuthorDirectory;
 import Books.BookDirectory;
+import General.MagazineDirectory;
 import Genres.GenreDirectory;
 
 /**
@@ -22,12 +23,14 @@ public class Library {
     private BookDirectory bookdirectory;
     private GenreDirectory genreDirectory;
     private EmployeeDirectory employeeDirectory;
+    private MagazineDirectory magazineDirectory;
     
     public Library() {
         this.authorDirectory=new AuthorDirectory();
         this.bookdirectory=new BookDirectory();
         this.genreDirectory= new GenreDirectory();
         this.employeeDirectory=new EmployeeDirectory();
+        this.magazineDirectory= new MagazineDirectory();
         this.count++;
         
         this.libraryID = "LibraryNo"+this.count;
@@ -103,6 +106,14 @@ public class Library {
 
     public void setBuildingNo(int buildingNo) {
         this.buildingNo = buildingNo;
+    }
+
+    public MagazineDirectory getMagazineDirectory() {
+        return magazineDirectory;
+    }
+
+    public void setMagazineDirectory(MagazineDirectory magazineDirectory) {
+        this.magazineDirectory = magazineDirectory;
     }
     
     @Override

@@ -29,9 +29,8 @@ public class BookDirectory {
         this.booklist = booklist;
     }
     
-    public Book createBook(int serialNumber, String name, Date registrationDate, boolean isAvailable,int pagesNo, String bindingType, String language, Author author, Genre genre ) {
+    public Book createBook(String name, Date registrationDate, boolean isAvailable,int pagesNo, String bindingType, String language, Author author, Genre genre ) {
         Book book=new Book();
-        book.setSerialNumber(serialNumber);
         book.setIsAvailable(isAvailable);
         book.setName(name);
         book.setRegistrationDate(registrationDate);

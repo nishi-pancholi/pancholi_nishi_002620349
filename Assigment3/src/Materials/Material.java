@@ -15,6 +15,12 @@ public class Material {
     String name;
     Date registrationDate;
     boolean isAvailable;
+    private static int count = 0;
+    
+    public Material(){
+        this.count++;   
+        this.serialNumber =this.count;
+    }
 
     public int getSerialNumber() {
         return serialNumber;

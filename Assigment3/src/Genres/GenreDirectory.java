@@ -17,9 +17,19 @@ public class GenreDirectory {
         this.genrelist = new ArrayList<Genre>();
     }
 
+    public ArrayList<Genre> getGenrelist() {
+        return genrelist;
+    }
+
+    public void setGenrelist(ArrayList<Genre> genrelist) {
+        this.genrelist = genrelist;
+    }
+
     public Genre createGenre(String name) {
         Genre genre=new Genre();
         genre.setGenreName(name);
+        
+        this.genrelist.add(genre);
         return genre;
     }
 }

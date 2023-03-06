@@ -26,11 +26,10 @@ public class MagazineDirectory {
         this.magazinelist = magazinelist;
     }   
     
-    public Magazine createMagazine(int serialNumber, String name, Date registrationDate, boolean isAvailable,String companyName, String issueType) {
+    public Magazine createMagazine(String name, Date registrationDate, boolean isAvailable,String companyName, String issueType) {
         Magazine mag = new Magazine();
         
         mag.setCompanyName(companyName);
-        mag.setSerialNumber(serialNumber);
         mag.setIssueType(issueType);
         mag.setIsAvailable(isAvailable);
         mag.setName(name);

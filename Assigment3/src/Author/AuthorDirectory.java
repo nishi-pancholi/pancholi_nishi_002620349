@@ -17,9 +17,19 @@ public class AuthorDirectory {
         this.authorlist = new ArrayList<Author>();
     }
 
+    public ArrayList<Author> getAuthorlist() {
+        return authorlist;
+    }
+
+    public void setAuthorlist(ArrayList<Author> authorlist) {
+        this.authorlist = authorlist;
+    }
+
     public Author createAuthor(String name) {
         Author auth=new Author();
         auth.setAuthorName(name);
+        
+        this.authorlist.add(auth);
         return auth;
     }
 }
