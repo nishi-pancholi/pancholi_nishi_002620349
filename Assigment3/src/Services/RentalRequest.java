@@ -5,6 +5,7 @@
 package Services;
 
 import Customer.Customer;
+import LibrarianArea.Library;
 import Materials.Material;
 
 /**
@@ -20,10 +21,12 @@ public class RentalRequest {
     String duration;
     String materialType;
     private Material material;
+    private Library lib;
     
     public RentalRequest() {
         this.customer = new Customer();
         this.material= new Material();
+        this.lib= new Library();
         this.status = "Created";
         this.count++;
         this.price= 0;
@@ -35,7 +38,9 @@ public class RentalRequest {
         this.customer = customer;
         this.status = "Created";
         this.material= new Material();
+        this.lib= new Library();
         this.count++;
+        this.price= 0;
         
         this.requestId = "RequestNo"+this.count;
     }
@@ -103,6 +108,14 @@ public class RentalRequest {
 
     public void setMaterialType(String materialType) {
         this.materialType = materialType;
+    }
+
+    public Library getLib() {
+        return lib;
+    }
+
+    public void setLib(Library lib) {
+        this.lib = lib;
     }
  
     @Override

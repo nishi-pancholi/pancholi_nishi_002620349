@@ -124,7 +124,7 @@ public class ViewCollectionJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(bookTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 620, 200));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 760, 200));
 
         magTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -144,7 +144,7 @@ public class ViewCollectionJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(magTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 560, 200));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 730, 200));
 
         jLabel1.setText("View Magazine Collection");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));

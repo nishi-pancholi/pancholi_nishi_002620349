@@ -36,13 +36,12 @@ public class CustomerDirectory {
         return null;
     }
     
-    public Customer createCustomer(String id, String name, String age,Branch branch) {
+    public Customer createCustomer(String id, String name, String age) {
         Customer c = new Customer();
   
         c.setPersonID(id);
         c.setName(name);
         c.setAge(age);
-        c.setBranch(branch);
         
         this.customerlist.add(c);
         return c;

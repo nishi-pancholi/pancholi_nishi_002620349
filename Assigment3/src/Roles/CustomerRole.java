@@ -24,16 +24,6 @@ public class CustomerRole extends Role{
     
     @Override
     public JFrame getWorkArea(ApplicationSystem system, UserAccount useraccount) {
-        Library lib= new Library();
-        ArrayList<Branch> branchList = system.getBranchList();
-        ArrayList<Customer> custList= system.getCustomerDirectory().getCustomerlist();
-        for(Branch b: branchList){
-            for(Customer c: custList){
-                if(c.getBranch()==b){
-                    lib=b.getLibrary();
-                }
-            }
-        }
-        return new CustomerJFrame(system, useraccount,lib);
+        return new CustomerJFrame(system, useraccount);
     }
 }

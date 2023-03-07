@@ -17,19 +17,10 @@ import Services.RentalRequestDirectory;
 public class Customer extends Person{
     private int requestsTotal;
     private RentalRequestDirectory rentalRequestDirectory;
-    private Branch branch;
     
     public Customer() {
         super();
         this.rentalRequestDirectory = new RentalRequestDirectory();
-    }
-
-    public Branch getBranch() {
-        return branch;
-    }
-
-    public void setBranch(Branch branch) {
-        this.branch = branch;
     }
     
     public int getRequestTotal() {
@@ -57,6 +48,6 @@ public class Customer extends Person{
     }
 
     public void addRequestForCustomer(RentalRequest request) {
-        this.rentalRequestDirectory.createRequest(this,request.getMaterial(),request.getStatus(),request.getDuration(),request.getMaterialType());
+        this.rentalRequestDirectory.createRequest(this,request.getMaterial(),request.getStatus(),request.getDuration(),request.getMaterialType(),request.getLib());
     }
 }

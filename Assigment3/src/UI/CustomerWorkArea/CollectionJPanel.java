@@ -6,8 +6,8 @@ package UI.CustomerWorkArea;
 
 import AppSystem.ApplicationSystem;
 import Books.Book;
-import Customer.Customer;
 import General.Magazine;
+import LibrarianArea.Branch;
 import LibrarianArea.Library;
 import LibrarianArea.UserAccount;
 import java.text.SimpleDateFormat;
@@ -22,7 +22,6 @@ public class CollectionJPanel extends javax.swing.JPanel {
 
     private UserAccount useraccount;
     private ApplicationSystem system;
-    private Library lib;
     DefaultTableModel bookTableModel;
     DefaultTableModel magTableModel;
     /**
@@ -32,11 +31,10 @@ public class CollectionJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    CollectionJPanel(ApplicationSystem system, UserAccount useraccount, Library lib) {
+    CollectionJPanel(ApplicationSystem system, UserAccount useraccount) {
        initComponents();
        this.system = system;
        this.useraccount = useraccount;
-       this.lib=lib;
        this.bookTableModel = (DefaultTableModel) bookTable.getModel();
        this.magTableModel = (DefaultTableModel) magTable.getModel();
        
@@ -46,31 +44,33 @@ public class CollectionJPanel extends javax.swing.JPanel {
     
     public void populateBook() {
         bookTableModel.setRowCount(0);
-            
-            ArrayList<Book> books=this.lib.getBookdirectory().getBooklist();
-            for(Book b: books){
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String date = sdf.format(b.getRegistrationDate());
-                Object[] row = new Object[9];
-            
-                row[0] = b.getSerialNumber();
-                row[1] = b.getName();
-                row[2] = date;
-                row[3] = b.getPagesNo();
-                row[4] = b.getBindingType();
-                row[5] = b.getLanguage();
-                row[6] = b.getAuthor().getAuthorName();
-                row[7] = b.getGenre().getGenreName();
-                row[8] = b.isIsAvailable();
-                
-                bookTableModel.addRow(row);
+            for(Branch br:this.system.getBranchList()){
+                ArrayList<Book> books=br.getLibrary().getBookdirectory().getBooklist();
+                for(Book b: books){
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    String date = sdf.format(b.getRegistrationDate());
+                    Object[] row = new Object[9];
+
+                    row[0] = b.getSerialNumber();
+                    row[1] = b.getName();
+                    row[2] = date;
+                    row[3] = b.getPagesNo();
+                    row[4] = b.getBindingType();
+                    row[5] = b.getLanguage();
+                    row[6] = b.getAuthor().getAuthorName();
+                    row[7] = b.getGenre().getGenreName();
+                    row[8] = b.isIsAvailable();
+
+                    bookTableModel.addRow(row);
+                }
             }
         
     }
     
     public void populateMag() {
         magTableModel.setRowCount(0);
-            ArrayList<Magazine> magazineList=this.lib.getMagazineDirectory().getMagazinelist();
+        for(Branch br:this.system.getBranchList()){
+            ArrayList<Magazine> magazineList=br.getLibrary().getMagazineDirectory().getMagazinelist();
             for(Magazine mag: magazineList){
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String date = sdf.format(mag.getRegistrationDate());
@@ -85,6 +85,7 @@ public class CollectionJPanel extends javax.swing.JPanel {
                 
                 magTableModel.addRow(row);
             }
+        }
                
     }
 
@@ -125,7 +126,7 @@ public class CollectionJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(bookTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 620, 200));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 750, 200));
 
         magTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,7 +146,7 @@ public class CollectionJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(magTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 560, 200));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 720, 200));
 
         jLabel1.setText("VIEW MAGAZINES");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, 20));

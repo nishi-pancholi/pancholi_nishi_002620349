@@ -23,7 +23,7 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
 
     private UserAccount useraccount;
     private ApplicationSystem system;
-    private Library lib;
+
     DefaultTableModel requestTableModel;
     /**
      * Creates new form ViewRequestsJPanel
@@ -32,11 +32,10 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    ViewRequestsJPanel(ApplicationSystem system, UserAccount useraccount, Library lib) {
+    ViewRequestsJPanel(ApplicationSystem system, UserAccount useraccount) {
        initComponents();
        this.system = system;
        this.useraccount = useraccount;
-       this.lib=lib;
        this.requestTableModel = (DefaultTableModel) requestTable.getModel();
        populate();
     }
@@ -47,13 +46,14 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
             Customer c=this.system.getCustomerDirectory().findById(this.useraccount.getAccountId());
             ArrayList<RentalRequest> reqList= c.getRentalRequestDirectory().getRequestlist();
             for(RentalRequest req: reqList){
-                Object[] row = new Object[5];
+                Object[] row = new Object[6];
             
                 row[0] = req;
                 row[1] = req.getStatus();
                 row[2] = req.getDuration();
                 row[3] = req.getMaterialType();
                 row[4] = req.getMaterial().getName();
+                row[5]= req.getLib().getLibraryName();
                 
                 requestTableModel.addRow(row);
             }
@@ -82,11 +82,11 @@ public class ViewRequestsJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Request Id", "Status", "Duration", "Material Type", "Material Name"
+                "Request Id", "Status", "Duration", "Material Type", "Material Name", "Library Name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

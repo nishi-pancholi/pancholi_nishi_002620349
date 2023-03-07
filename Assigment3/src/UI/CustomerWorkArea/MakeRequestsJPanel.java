@@ -8,6 +8,7 @@ import AppSystem.ApplicationSystem;
 import Books.Book;
 import Customer.Customer;
 import General.Magazine;
+import LibrarianArea.Branch;
 import LibrarianArea.Library;
 import LibrarianArea.UserAccount;
 import Materials.Material;
@@ -23,7 +24,6 @@ public class MakeRequestsJPanel extends javax.swing.JPanel {
 
     private UserAccount useraccount;
     private ApplicationSystem system;
-    private Library lib;
     /**
      * Creates new form MakeRequestsJPanel
      */
@@ -31,19 +31,44 @@ public class MakeRequestsJPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    MakeRequestsJPanel(ApplicationSystem system, UserAccount useraccount, Library lib) {
+    MakeRequestsJPanel(ApplicationSystem system, UserAccount useraccount) {
        initComponents();
        this.system = system;
        this.useraccount = useraccount;
-       this.lib=lib;
-       populateDropdown();
+
+       
+       populateLocation();
+       populateLibrary();
        populateMaterialName();
+       populateDropdown();
     }
 
+    public void populateLocation(){
+        ArrayList<Branch> branchList= this.system.getBranchList();
+        for(Branch b:branchList){
+            jComboBox1.addItem(b.getLibrary().getLocation());
+        }
+        
+    }
+    
+    public void populateLibrary(){
+        libComboBox.removeAllItems();
+        ArrayList<Branch> branchList= this.system.getBranchList();
+        String locSelected =(String) jComboBox1.getSelectedItem();
+        for(Branch b:branchList){
+            if(b.getLibrary().getLocation().equals(locSelected)){
+                libComboBox.addItem(b.getLibrary());
+            }
+        }
+        
+    }
+    
+    
     public void populateDropdown(){
+        Library lib= (Library) libComboBox.getSelectedItem();
         String materialSelected =(String) chooseComboBox.getSelectedItem();
-        ArrayList<Book> bookList= this.lib.getBookdirectory().getBooklist();
-        ArrayList<Magazine> magList= this.lib.getMagazineDirectory().getMagazinelist();
+        ArrayList<Book> bookList= lib.getBookdirectory().getBooklist();
+        ArrayList<Magazine> magList= lib.getMagazineDirectory().getMagazinelist();
         if(materialSelected=="book"){
             materialsComboBox.removeAllItems();
             for(Book b:bookList){
@@ -90,6 +115,10 @@ public class MakeRequestsJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         durationComboBox = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
+        libComboBox = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(0, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -105,24 +134,24 @@ public class MakeRequestsJPanel extends javax.swing.JPanel {
                 chooseComboBoxActionPerformed(evt);
             }
         });
-        add(chooseComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 46, 217, -1));
+        add(chooseComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 217, -1));
 
         jLabel1.setText("Select a material type you want to rent:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 23, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
 
         materialsComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 materialsComboBoxItemStateChanged(evt);
             }
         });
-        add(materialsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 220, -1));
+        add(materialsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 220, -1));
 
         jLabel2.setText("Selected Material Name Is:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, -1));
-        add(materialNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 230, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
+        add(materialNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 230, -1));
 
         jLabel3.setText("Choose material:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, -1, -1));
 
         jButton1.setText("Place Request");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -130,13 +159,28 @@ public class MakeRequestsJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, -1, -1));
 
         durationComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "weekly", "monthly", "quaterly" }));
-        add(durationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 200, -1));
+        add(durationComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, 200, -1));
 
         jLabel4.setText("Choose Duration:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, -1, -1));
+
+        add(libComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 220, -1));
+
+        jLabel5.setText("Select Location:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
+
+        jLabel6.setText("Select Library:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
+
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 220, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void chooseComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseComboBoxActionPerformed
@@ -155,27 +199,39 @@ public class MakeRequestsJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Library lib= (Library) libComboBox.getSelectedItem();
         String materialSelected =(String) chooseComboBox.getSelectedItem();
         Material mat =(Material) materialsComboBox.getSelectedItem();
         String duration= (String) durationComboBox.getSelectedItem();
         mat.setIsAvailable(false);
         Customer c = this.system.getCustomerDirectory().findById(useraccount.getAccountId());
-        RentalRequest request = c.getRentalRequestDirectory().createRequest(c,mat, "Requested", duration, materialSelected);
+        RentalRequest request = c.getRentalRequestDirectory().createRequest(c,mat, "Requested", duration, materialSelected,lib);
         JOptionPane.showMessageDialog(null, "Request Created.");
         
         populateDropdown();
         populateMaterialName();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        populateLibrary();
+        populateMaterialName();
+        populateDropdown();
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> chooseComboBox;
     private javax.swing.JComboBox durationComboBox;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JComboBox libComboBox;
     private javax.swing.JTextField materialNameField;
     private javax.swing.JComboBox materialsComboBox;
     // End of variables declaration//GEN-END:variables

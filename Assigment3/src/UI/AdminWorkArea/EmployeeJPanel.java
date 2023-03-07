@@ -211,10 +211,38 @@ public class EmployeeJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
         }
         else {
-            UserAccount user = this.system.getUserAccountDirectory().createUserAccount(fieldManagerUsername.getText(), fieldManagerPassword.getText(), "branch manager");
-            branchDetails.getLibrary().getEmployeeDirectory().createEmployee(fieldManagerUsername.getText(),managerName, managerAge, Float.valueOf(managerExp), "branch manager");
-            JOptionPane.showMessageDialog(null,"Manager Added");
-            populate();
+            ArrayList<Employee> empList=branchDetails.getLibrary().getEmployeeDirectory().getEmployeeList();
+            System.out.println(empList.isEmpty());
+            if(empList.isEmpty()){
+                UserAccount user = this.system.getUserAccountDirectory().createUserAccount(fieldManagerUsername.getText(), fieldManagerPassword.getText(), "branch manager");
+                branchDetails.getLibrary().getEmployeeDirectory().createEmployee(fieldManagerUsername.getText(),managerName, managerAge, Float.valueOf(managerExp), "branch manager");
+                JOptionPane.showMessageDialog(null,"Manager Added");
+                populate();
+            }
+            else{
+                boolean ismanagerPresent=false;
+                for(Employee emp:empList){
+                    System.out.println(emp.getDesignation());
+                    if(emp.getDesignation()=="branch manager"){
+                       ismanagerPresent=true;
+                       break;
+                    }
+                    else{
+                        ismanagerPresent=false;
+                    }
+                }
+                if(ismanagerPresent){
+                       JOptionPane.showMessageDialog(null,"Only one manager can be added per branch"); 
+                }
+                else{
+                        branchDetails.getLibrary().getEmployeeDirectory().createEmployee(fieldManagerUsername.getText(),managerName, managerAge, Float.valueOf(managerExp), "branch manager");
+                        UserAccount user = this.system.getUserAccountDirectory().createUserAccount(fieldManagerUsername.getText(), fieldManagerPassword.getText(), "branch manager");
+                        JOptionPane.showMessageDialog(null,"Manager Added");
+
+                        populate();
+                }
+            }
+            
         }
         
     }//GEN-LAST:event_addBranchManagerBtnActionPerformed
@@ -233,10 +261,40 @@ public class EmployeeJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Sorry credentials are taken.");
         }
         else {
-            UserAccount user = this.system.getUserAccountDirectory().createUserAccount(fieldLibUsername.getText(), fieldLibPassword.getText(), "librarian");
-            branchDetails.getLibrary().getEmployeeDirectory().createEmployee(fieldLibUsername.getText(),libName, libAge, Float.valueOf(libExp), "librarian");
-            JOptionPane.showMessageDialog(null,"Librarian Added");
-            populate();
+            ArrayList<Employee> empList=branchDetails.getLibrary().getEmployeeDirectory().getEmployeeList();
+            System.out.println(empList.isEmpty());
+            if(empList.isEmpty()){    
+                UserAccount user = this.system.getUserAccountDirectory().createUserAccount(fieldLibUsername.getText(), fieldLibPassword.getText(), "librarian");
+                branchDetails.getLibrary().getEmployeeDirectory().createEmployee(fieldLibUsername.getText(),libName, libAge, Float.valueOf(libExp), "librarian");
+                JOptionPane.showMessageDialog(null,"Librarian Added");
+                populate();
+            }
+            else{
+                boolean islibrarianPresent=false;
+                for(Employee emp:empList){
+                    System.out.println(emp.getDesignation());
+                    if(emp.getDesignation()=="librarian"){
+                       islibrarianPresent=true;
+                       break;
+                    }
+                    else{
+                        islibrarianPresent=false;
+                    }
+                }
+                if(islibrarianPresent){
+                       JOptionPane.showMessageDialog(null,"Only one librarian can be added per branch"); 
+                }
+                else{
+                        branchDetails.getLibrary().getEmployeeDirectory().createEmployee(fieldLibUsername.getText(),libName, libAge, Float.valueOf(libExp), "librarian");
+                        UserAccount user = this.system.getUserAccountDirectory().createUserAccount(fieldLibUsername.getText(), fieldLibPassword.getText(), "librarian");
+                        JOptionPane.showMessageDialog(null,"Librarian Added");
+
+                        populate();
+                }
+
+            }
+            
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

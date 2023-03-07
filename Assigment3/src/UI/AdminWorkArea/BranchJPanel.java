@@ -155,14 +155,29 @@ public class BranchJPanel extends javax.swing.JPanel {
     private void addBranchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBranchActionPerformed
         // TODO add your handling code here:
 
-        ArrayList<Branch> b= this.system.getBranchList();
+        ArrayList<Branch> branchList= this.system.getBranchList();
         if(this.system.branchExists(fieldBranchName.getText())) {
             JOptionPane.showMessageDialog(null, "Sorry branch is already present.");
         }
         else {
-            Branch br= this.system.createBranch(fieldBranchName.getText());
-            br.createLibrary(fieldLibraryName.getText(), fieldLocation.getText(), Integer.valueOf(fieldBuildingNo.getText()));
-            populate();
+            if(branchList.isEmpty()){
+                Branch br= this.system.createBranch(fieldBranchName.getText());
+                br.createLibrary(fieldLibraryName.getText(), fieldLocation.getText(), Integer.valueOf(fieldBuildingNo.getText()));
+                populate();
+            }
+            else{
+              for(Branch b:branchList){
+                if(b.getLibrary().getLocation().equals(fieldLocation.getText())){
+                   JOptionPane.showMessageDialog(null, "Sorry branch in this location is already present.");
+                }
+                else{
+                    Branch br= this.system.createBranch(fieldBranchName.getText());
+                    br.createLibrary(fieldLibraryName.getText(), fieldLocation.getText(), Integer.valueOf(fieldBuildingNo.getText()));
+                    populate();
+                }
+              }
+            }
+            
             
         }
     }//GEN-LAST:event_addBranchActionPerformed

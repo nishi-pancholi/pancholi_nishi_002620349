@@ -17,7 +17,6 @@ public class CustomerJFrame extends javax.swing.JFrame {
     
     private ApplicationSystem system;
     private UserAccount useraccount;
-    private Library lib;
 
     /**
      * Creates new form CustomerJFrame
@@ -26,12 +25,11 @@ public class CustomerJFrame extends javax.swing.JFrame {
         initComponents();
     }
 
-    public CustomerJFrame(ApplicationSystem system, UserAccount useraccount, Library lib) {
+    public CustomerJFrame(ApplicationSystem system, UserAccount useraccount) {
         initComponents();
         this.setVisible(true);
         this.system=system;
         this.useraccount=useraccount;
-        this.lib=lib;
     }
 
     /**
@@ -118,17 +116,17 @@ public class CustomerJFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new CollectionJPanel(system, useraccount,lib));
+        jSplitPane1.setRightComponent(new CollectionJPanel(system, useraccount));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new MakeRequestsJPanel(system, useraccount,lib));
+        jSplitPane1.setRightComponent(new MakeRequestsJPanel(system, useraccount));
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new ViewRequestsJPanel(system, useraccount,lib));
+        jSplitPane1.setRightComponent(new ViewRequestsJPanel(system, useraccount));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

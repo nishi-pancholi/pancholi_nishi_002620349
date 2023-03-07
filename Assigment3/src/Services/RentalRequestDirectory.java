@@ -5,6 +5,7 @@
 package Services;
 
 import Customer.Customer;
+import LibrarianArea.Library;
 import Materials.Material;
 import java.util.ArrayList;
 
@@ -28,12 +29,13 @@ public class RentalRequestDirectory {
     }
 
     // create a new order
-    public RentalRequest createRequest(Customer customer,Material m,String status,String duration, String materialType) {
+    public RentalRequest createRequest(Customer customer,Material m,String status,String duration, String materialType,Library lib) {
         RentalRequest req = new RentalRequest(customer);
         req.setMaterial(m);
         req.setStatus(status);
         req.setMaterialType(materialType);
         req.setDuration(duration);
+        req.setLib(lib);
         
         this.requestlist.add(req);
         return req;
