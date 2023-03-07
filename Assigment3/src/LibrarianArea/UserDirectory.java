@@ -48,6 +48,20 @@ public class UserDirectory {
         return null;
     }
     
+    public UserAccount findByUserName(String name) {
+        for(UserAccount u: this.useraccountlist) {
+            if(u.getUsername().equals(name)) {
+                return u;
+            }
+        }
+        
+        return null;
+    }
+    
+    public void removeUser(UserAccount u){
+        this.useraccountlist.remove(u);
+    }
+    
     public UserAccount getUserAccount(String username, String password, String role) {
         for(UserAccount u: this.useraccountlist) {
             if(u.getUsername().equals(username) && u.getPassword().equals(password) && u.getRole().equals(role)) {

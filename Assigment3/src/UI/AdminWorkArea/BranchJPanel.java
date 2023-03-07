@@ -6,8 +6,10 @@ package UI.AdminWorkArea;
 
 import AppSystem.ApplicationSystem;
 import LibrarianArea.Branch;
+import LibrarianArea.Employee;
 import LibrarianArea.Library;
 import LibrarianArea.UserAccount;
+import LibrarianArea.UserDirectory;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -191,6 +193,14 @@ public class BranchJPanel extends javax.swing.JPanel {
         int selectedRow= branchTable.getSelectedRow();
         if(selectedRow>=0){
             Branch b=(Branch) branchTable.getValueAt(selectedRow, 0);
+            UserDirectory uaDir= this.system.getUserAccountDirectory();
+            ArrayList<Employee> empList=b.getLibrary().getEmployeeDirectory().getEmployeeList();
+            for(Employee emp:empList){
+                System.out.println(emp.getUserName()+"empusername");
+                UserAccount u=uaDir.findByUserName(emp.getUserName());
+                System.out.println(u.getUsername()+"user");
+                uaDir.removeUser(u);
+            }
             this.system.removeBranch(b.getBranchName());
             JOptionPane.showMessageDialog(null,"Branch Deleted");
             populate();

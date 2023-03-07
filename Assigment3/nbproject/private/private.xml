@@ -3,45 +3,50 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/CustomerWorkArea/MakeRequestsJPanel.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/AppSystem/ApplicationSystem.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/Employee.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/Branch.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/EmployeeDirectory.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/Library.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/General/Magazine.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Roles/Role.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/UserDirectory.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Books/BookDirectory.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/AccountJPanel.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Customer/CustomerDirectory.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/MainJFrame.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/CustomerJPanel.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Services/RentalRequestDirectory.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/LibrarianWorkArea/MagazineJPanel.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/LibrarianWorkArea/LibrarianJFrame.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Roles/CustomerRole.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Genres/GenreDirectory.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Genres/Genre.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Roles/BranchManagerRole.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Roles/AdminRole.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/BranchManagerWorkArea/BranchManagerJFrame.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Books/Book.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/EmployeeJPanel.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Materials/Material.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/General/MagazineDirectory.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/LibrarianWorkArea/BookJPanel.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Customer/Customer.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/AdminJFrame.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Roles/LibrarianRole.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Author/AuthorDirectory.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/UserAccount.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Author/Author.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/CustomerWorkArea/CustomerJFrame.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Services/RentalRequest.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/BranchJPanel.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/LibrarianWorkArea/AuthorGenreJPanel.java</file>
-            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Persons/Person.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/UserDirectory.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Materials/Material.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/EmployeeJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/BranchManagerWorkArea/ViewCollectionJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Genres/Genre.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/AccountJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Roles/BranchManagerRole.java</file>
             <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/LibrarianWorkArea/RequestsJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/Branch.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Author/AuthorDirectory.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/BranchManagerWorkArea/ViewRentalRequestJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/EmployeeDirectory.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/BranchJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/CustomerWorkArea/CustomerJFrame.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Services/RentalRequestDirectory.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Books/Book.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/LibrarianWorkArea/MagazineJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/General/MagazineDirectory.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Roles/CustomerRole.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/Library.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Books/BookDirectory.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/LibrarianWorkArea/AuthorGenreJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Author/Author.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Persons/Person.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/AdminJFrame.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/LibrarianWorkArea/BookJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/CustomerWorkArea/CollectionJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Genres/GenreDirectory.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/MainJFrame.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/UserAccount.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/AdminWorkArea/CustomerJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/CustomerWorkArea/ViewRequestsJPanel.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Customer/CustomerDirectory.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/LibrarianArea/Employee.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/BranchManagerWorkArea/BranchManagerJFrame.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Roles/Role.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Services/RentalRequest.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/General/Magazine.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/UI/LibrarianWorkArea/LibrarianJFrame.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Roles/AdminRole.java</file>
+            <file>file:/Users/nishipancholi/Documents/aed%20assignment%203/pancholi_nishi_002620349/Assigment3/src/Customer/Customer.java</file>
         </group>
     </open-files>
 </project-private>
